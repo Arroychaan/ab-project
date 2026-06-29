@@ -1,49 +1,581 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+html, body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #fff;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* 1 PAGE FIT - NO SCROLL ON DESKTOP */
+@media (min-width: 1024px) {
+  html, body {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* ===========================
+   NAVBAR
+   =========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  height: 85px;
+  background: #fff;
+  border-bottom: 1px solid #f2f2f2;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-img {
+  height: 60px !important;
+  width: auto !important;
+  display: block;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-links a {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #555;
+  transition: color 0.2s;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navbar-links a:hover {
+  color: #0d6e3f;
+}
+
+.navbar-links a.active {
+  color: #0d6e3f;
+  font-weight: 600;
+}
+
+.navbar-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: #0d6e3f;
+  border-radius: 2px;
+}
+
+.navbar-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0d6e3f;
+  color: #fff;
+  padding: 11px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-cta:hover {
+  background: #0a5a33;
+  transform: translateY(-1px);
+}
+
+.navbar-cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
+.hero {
+  padding: 20px 60px;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+/* Unified Hero Container: combines text and video inside a single card */
+.hero-container {
+  width: 100%;
+  background: #f4faf7;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 60px;
+  gap: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero-container {
+    height: 100%;
+  }
+}
+
+/* Background Pattern overlay on Hero */
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/design-assets/hero-pattern.png');
+  background-repeat: repeat;
+  background-size: 200px;
+  opacity: 0.06;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Mosque silhouette watermark on Hero */
+.hero-bg-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 75%;
+  background-image: url('/design-assets/homesection.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: contain;
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-left {
+  flex: 1.1;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-left-content {
+  max-width: 90%;
+}
+
+.hero-left-content h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #0d6e3f;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-left-content p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  background: #0d6e3f;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-btn:hover {
+  background: #0a5a33;
+  transform: translateY(-2px);
+}
+
+.hero-btn-play-icon {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-btn-play-icon svg {
+  width: 10px;
+  height: 10px;
+  color: #0d6e3f;
+  fill: currentColor;
+  margin-left: 2px;
+}
+
+.hero-right {
+  flex: 0.9;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Full landscape video container */
+.hero-video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Strictly landscape aspect ratio */
+  border-radius: 20px;
+  background: #000;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating Mute/Unmute Button */
+.video-mute-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.video-mute-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.08);
+}
+
+.video-mute-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===========================
+   SCHOOL SECTION
+   =========================== */
+.school-section {
+  background: #fff;
+  padding: 10px 60px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .school-section {
+    height: 310px;
+  }
+}
+
+/* Subtle pattern background for the school section */
+.school-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('/design-assets/school-card-pattern.png');
+  background-repeat: repeat;
+  background-size: 160px;
+  opacity: 0.04;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.school-section-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.school-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.school-section-divider .line {
+  width: 36px;
+  height: 2.5px;
+  background: #0d6e3f;
+  border-radius: 1px;
+}
+
+.school-section-divider .dot {
+  width: 6px;
+  height: 6px;
+  background: #0d6e3f;
+  border-radius: 50%;
+}
+
+.school-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+}
+
+.school-card {
+  flex: 1;
+  height: 220px;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.school-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.school-card.sdiqu {
+  background: #f4faf7;
+  border: 1px solid #e2f0e9;
+}
+.school-card.smpiqu {
+  background: #f2f7fc;
+  border: 1px solid #deeaf5;
+}
+.school-card.smaiqu {
+  background: #f7f5fa;
+  border: 1px solid #eae5f2;
+}
+
+.school-card-logo {
+  height: 65px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.school-card-logo img {
+  height: 100% !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
+.school-card-desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  z-index: 2;
+  position: relative;
+  max-width: 90%;
+}
+
+.school-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 22px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  align-self: flex-start;
+  z-index: 2;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.school-card.sdiqu .school-card-btn {
+  background: #0d6e3f;
+}
+.school-card.smpiqu .school-card-btn {
+  background: #2b6cb0;
+}
+.school-card.smaiqu .school-card-btn {
+  background: #6b46c1;
+}
+
+.school-card-btn:hover {
+  opacity: 0.9;
+  transform: translateX(3px);
+}
+
+.school-card-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.school-card-bg-illust {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  opacity: 0.12;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(12px, 12px);
+}
+
+/* ============ RESPONSIVE LAYOUT ============ */
+@media (max-width: 1023px) {
+  html, body, .app-container {
+    height: auto !important;
+    overflow: auto !important;
+  }
+
+  .navbar {
+    padding: 15px 24px;
+    height: auto;
+  }
+
+  .navbar-logo-img {
+    height: 48px !important;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 24px;
+    height: auto;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 30px;
+  }
+
+  .hero-left, .hero-right {
+    width: 100%;
+    flex: none;
+  }
+
+  .hero-left-content {
+    max-width: 100%;
+  }
+
+  .hero-left-content h2 {
+    font-size: 32px;
+  }
+
+  .hero-video-frame {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero-video-frame video {
+  }
+
+  .school-section {
+    height: auto;
+    padding: 30px 24px;
+  }
+
+  .school-cards {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .school-card {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-left-content h2 {
+    font-size: 26px;
+  }
+  .school-section-title {
+    font-size: 18px;
   }
 }
