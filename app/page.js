@@ -1,10 +1,12 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -13,11 +15,7 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch((err) => {
-              console.log("Autoplay was prevented by browser policy:", err);
-            });
-          } else {
+          if (!entry.isIntersecting) {
             video.pause();
           }
         });
@@ -28,6 +26,18 @@ export default function Home() {
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch((err) => {
+        console.log("Play was prevented by browser policy:", err);
+      });
+    } else {
+      video.pause();
+    }
+  };
 
   const toggleMute = () => {
     const video = videoRef.current;
@@ -41,16 +51,19 @@ export default function Home() {
       {/* ============ NAVBAR ============ */}
       <nav className="navbar">
         <div className="navbar-logo">
-          <img
-            src="/Logo-assets/Logo-Albahjah.png?v=3"
-            alt="Logo Al-Bahjah"
-            className="navbar-logo-img"
-          />
+          <Link href="/">
+            <img
+              src="/Logo-assets/Logo-Albahjah.png?v=3"
+              alt="Logo Al-Bahjah"
+              className="navbar-logo-img"
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </div>
 
         <div className="navbar-links">
-          <a href="#" className="active">Beranda</a>
-          <a href="#">Tentang Kami</a>
+          <Link href="/" className="active">Beranda</Link>
+          <Link href="/tentang-kami">Tentang Kami</Link>
           <a href="#">Sekolah</a>
           <a href="#">Program</a>
           <a href="#">Berita</a>
@@ -59,9 +72,9 @@ export default function Home() {
 
         <button className="navbar-cta">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
-          Diskusi Personal
+          Hubungi Kami
         </button>
       </nav>
 
@@ -69,22 +82,22 @@ export default function Home() {
       <section className="hero">
         <div className="hero-container">
           <div className="hero-bg-left"></div>
-          
+
           <div className="hero-left">
             <div className="hero-left-content">
-              <h2>Al Bahjah <br />Cabang Cirebon 1</h2>
+              <h2>Sekolah & Ponpes Al-Bahjah<br />Cabang Cirebon 1 (Pusat)</h2>
               <p>Membentuk generasi Qur&apos;ani, berakhlak mulia, berilmu dan berprestasi untuk masa depan yang lebih baik.</p>
-              <button className="hero-btn">
+              <Link href="/tentang-kami" className="hero-btn">
                 <span className="hero-btn-play-icon">
                   <svg viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </span>
                 Kenal Lebih Dekat
-              </button>
+              </Link>
             </div>
           </div>
-          
+
           <div className="hero-right">
             <div className="hero-video-frame">
               <video
@@ -93,14 +106,31 @@ export default function Home() {
                 muted={isMuted}
                 loop
                 playsInline
-                autoPlay
-                preload="none"
+                preload="metadata"
+                onClick={togglePlay}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                style={{ cursor: "pointer" }}
                 aria-label="Video Al-Bahjah"
               />
-              
+
+              {/* Play/Pause Center Button Overlay */}
+              {!isPlaying && (
+                <button
+                  className="video-play-overlay-btn"
+                  onClick={togglePlay}
+                  aria-label="Putar Video"
+                  title="Putar Video"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />
+                  </svg>
+                </button>
+              )}
+
               {/* Floating Mute/Unmute toggle button */}
-              <button 
-                className="video-mute-btn" 
+              <button
+                className="video-mute-btn"
                 onClick={toggleMute}
                 aria-label={isMuted ? "Unmute Video" : "Mute Video"}
                 title={isMuted ? "Suarakan Video" : "Bisukan Video"}
@@ -108,15 +138,15 @@ export default function Home() {
                 {isMuted ? (
                   // Mute Icon
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-                    <line x1="23" y1="9" x2="17" y2="15"/>
-                    <line x1="17" y1="9" x2="23" y2="15"/>
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <line x1="23" y1="9" x2="17" y2="15" />
+                    <line x1="17" y1="9" x2="23" y2="15" />
                   </svg>
                 ) : (
                   // Unmute/Volume Up Icon
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
                   </svg>
                 )}
               </button>

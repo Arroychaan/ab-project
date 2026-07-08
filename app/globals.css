@@ -287,6 +287,39 @@ a {
   display: block;
 }
 
+/* Play/Pause Center Button Overlay */
+.video-play-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(13, 110, 63, 0.9);
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(13, 110, 63, 0.4);
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.video-play-overlay-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #0a5a33;
+  box-shadow: 0 10px 30px rgba(10, 90, 51, 0.6);
+}
+
+.video-play-overlay-btn svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+}
+
 /* Floating Mute/Unmute Button */
 .video-mute-btn {
   position: absolute;
@@ -457,6 +490,7 @@ a {
   gap: 6px;
   padding: 8px 22px;
   border-radius: 20px;
+  background: #0d6e3f;
   color: #fff;
   font-size: 12px;
   font-weight: 600;
@@ -467,16 +501,6 @@ a {
   z-index: 2;
   position: relative;
   font-family: 'Poppins', sans-serif;
-}
-
-.school-card.sdiqu .school-card-btn {
-  background: #0d6e3f;
-}
-.school-card.smpiqu .school-card-btn {
-  background: #2b6cb0;
-}
-.school-card.smaiqu .school-card-btn {
-  background: #6b46c1;
 }
 
 .school-card-btn:hover {
@@ -577,5 +601,235 @@ a {
   }
   .school-section-title {
     font-size: 18px;
+  }
+}
+
+/* ===========================
+   WHATSAPP FLOATING BUTTON
+   =========================== */
+.wa-float-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #25d366;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.wa-float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+}
+
+.wa-float-lottie {
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+}
+
+/* ===========================
+   WHATSAPP POPUP OVERLAY
+   =========================== */
+.wa-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: wa-fade-in 0.25s ease;
+}
+
+@keyframes wa-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wa-slide-up {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.wa-popup-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 36px 32px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: wa-slide-up 0.3s ease;
+}
+
+.wa-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.wa-popup-close:hover {
+  background: #e8e8e8;
+}
+
+.wa-popup-close svg {
+  width: 16px;
+  height: 16px;
+  color: #666;
+}
+
+.wa-popup-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  border: 3px solid #e2f0e9;
+  box-shadow: 0 4px 15px rgba(13, 110, 63, 0.12);
+}
+
+.wa-popup-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wa-popup-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.wa-popup-subtitle {
+  font-size: 13.5px;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+.wa-popup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #edf7f1;
+  border: 1px solid #d4eddf;
+  border-radius: 20px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+}
+
+.wa-popup-badge span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0d6e3f;
+}
+
+.wa-popup-desc {
+  font-size: 13.5px;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.wa-popup-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wa-popup-btn-confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wa-popup-btn-confirm:hover {
+  background: #1fb855;
+  transform: translateY(-1px);
+}
+
+.wa-popup-btn-confirm svg {
+  width: 20px;
+  height: 20px;
+}
+
+.wa-popup-btn-cancel {
+  padding: 11px 24px;
+  background: transparent;
+  color: #888;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wa-popup-btn-cancel:hover {
+  background: #fafafa;
+  color: #555;
+}
+
+/* Responsive adjustments for WhatsApp floating button */
+@media (max-width: 600px) {
+  .wa-float-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .wa-float-lottie {
+    width: 34px;
+    height: 34px;
+  }
+
+  .wa-popup-card {
+    padding: 32px 24px 24px;
+    border-radius: 20px;
+  }
+
+  .wa-popup-logo {
+    width: 75px;
+    height: 75px;
   }
 }
