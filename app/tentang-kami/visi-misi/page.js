@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function TentangKami() {
+export default function VisiMisi() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
@@ -144,54 +144,103 @@ export default function TentangKami() {
 
       {/* ============ CONTENT SECTION ============ */}
       <section style={{ 
-        padding: "80px 20px", 
-        display: "flex", 
-        flexDirection: "column", 
-        alignItems: "center", 
+        padding: "50px 24px",
+        minHeight: "calc(100vh - 85px)",
+        background: "#fff",
+        display: "flex",
         justifyContent: "center",
-        minHeight: "60vh",
-        textAlign: "center",
-        background: "#f4faf7",
-        margin: "24px 60px",
-        borderRadius: "24px",
+        alignItems: "flex-start",
         position: "relative",
-        overflow: "hidden"
+        overflowY: "auto"
       }}>
-        {/* Decorative background similar to hero */}
         <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/design-assets/hero-pattern.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px",
-          opacity: 0.04,
-          pointerEvents: "none"
-        }}></div>
-
-        <h1 style={{ 
-          fontSize: "36px", 
-          color: "#0d6e3f", 
-          fontWeight: "700", 
-          marginBottom: "16px",
-          zIndex: 2
+          maxWidth: "900px",
+          width: "100%",
+          background: "#f4faf7",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow: "0 10px 30px rgba(13, 110, 63, 0.03)",
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "32px"
         }}>
-          Tentang Kami
-        </h1>
-        
-        <p style={{ 
-          fontSize: "16px", 
-          color: "#555", 
-          maxWidth: "600px", 
-          lineHeight: "1.6",
-          marginBottom: "32px",
-          zIndex: 2
-        }}>
-          Halaman Tentang Kami sedang dalam tahap pengembangan. Di sini nantinya Anda akan menemukan informasi lengkap mengenai sejarah, visi, misi, dan nilai-nilai luhur dari Sekolah & Ponpes Al-Bahjah.
-        </p>
+          {/* Header */}
+          <div style={{ textAlign: "center", borderBottom: "2px solid #e2f0e9", paddingBottom: "20px" }}>
+            <h1 style={{ fontSize: "28px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>
+              Visi, Misi & 3 Pilar Utama
+            </h1>
+            <p style={{ fontSize: "14px", color: "#666" }}>
+              Komitmen Keislaman dan Pendidikan Unggulan Al-Bahjah
+            </p>
+          </div>
 
-        <Link href="/" className="hero-btn" style={{ textDecoration: "none", zIndex: 2 }}>
-          Kembali ke Beranda
-        </Link>
+          {/* Visi & Misi */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div style={{ background: "#fff", padding: "24px", borderRadius: "16px", border: "1px solid #e2f0e9" }}>
+              <h3 style={{ fontSize: "18px", color: "#0d6e3f", fontWeight: "700", marginBottom: "10px" }}>Visi</h3>
+              <p style={{ fontSize: "15px", color: "#333", lineHeight: "1.7", fontWeight: "500", fontStyle: "italic" }}>
+                &ldquo;Membentuk generasi Qur&apos;ani, berakhlak mulia, berilmu dan berprestasi untuk masa depan umat yang lebih baik.&rdquo;
+              </p>
+            </div>
+
+            <div style={{ background: "#fff", padding: "24px", borderRadius: "16px", border: "1px solid #e2f0e9" }}>
+              <h3 style={{ fontSize: "18px", color: "#0d6e3f", fontWeight: "700", marginBottom: "12px" }}>Misi</h3>
+              <ul style={{ paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px", color: "#444", fontSize: "14.5px", lineHeight: "1.6" }}>
+                <li>Menyelenggarakan sistem pendidikan terpadu yang memadukan kurikulum agama dan umum secara seimbang.</li>
+                <li>Menumbuhkan kecintaan terhadap Al-Qur&apos;an melalui program tahfidz yang terstruktur dan berkualitas.</li>
+                <li>Membina karakter santri dengan adab Islami dan keteladanan akhlak mulia baginda Nabi Muhammad SAW.</li>
+                <li>Mendorong prestasi akademis dan non-akademis santri di tingkat nasional maupun internasional.</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 3 Pilar Al-Bahjah */}
+          <div style={{ borderTop: "2px solid #e2f0e9", paddingTop: "24px" }}>
+            <h2 style={{ fontSize: "20px", color: "#0d6e3f", fontWeight: "700", textAlign: "center", marginBottom: "20px" }}>
+              3 Pilar Pendidikan Al-Bahjah
+            </h2>
+            
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              
+              {/* Pilar 1 */}
+              <div style={{ flex: "1", minWidth: "240px", background: "#fff", padding: "20px", borderRadius: "16px", border: "1px solid #e2f0e9" }}>
+                <div style={{ fontSize: "24px", marginBottom: "10px" }}>📖</div>
+                <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>Tahfidzul Qur&apos;an</h4>
+                <p style={{ fontSize: "13.5px", color: "#555", lineHeight: "1.6" }}>
+                  Membina santri agar hafal Al-Qur&apos;an 30 Juz secara mutqin, tartil, serta memahami dasar-dasar tajwid dan makhorijul huruf dengan baik.
+                </p>
+              </div>
+
+              {/* Pilar 2 */}
+              <div style={{ flex: "1", minWidth: "240px", background: "#fff", padding: "20px", borderRadius: "16px", border: "1px solid #e2f0e9" }}>
+                <div style={{ fontSize: "24px", marginBottom: "10px" }}>📚</div>
+                <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>Tafaqquh Fiddin</h4>
+                <p style={{ fontSize: "13.5px", color: "#555", lineHeight: "1.6" }}>
+                  Membekali santri dengan pemahaman fikih, akidah, hadits, dan bahasa Arab (alat) melalui kajian kitab-kitab khazanah keislaman Ahlus Sunnah wal Jama&apos;ah.
+                </p>
+              </div>
+
+              {/* Pilar 3 */}
+              <div style={{ flex: "1", minWidth: "240px", background: "#fff", padding: "20px", borderRadius: "16px", border: "1px solid #e2f0e9" }}>
+                <div style={{ fontSize: "24px", marginBottom: "10px" }}>🤝</div>
+                <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>Akhlakul Karimah</h4>
+                <p style={{ fontSize: "13.5px", color: "#555", lineHeight: "1.6" }}>
+                  Mengutamakan keteladanan adab dalam keseharian santri, melatih khidmah (pengabdian) kepada sesama, dan berbakti kepada orang tua (*birrul walidain*).
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Action button */}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            <Link href="/" className="hero-btn" style={{ textDecoration: "none" }}>
+              Kembali ke Beranda
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function TentangKami() {
+export default function UnitPendidikan() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
@@ -144,54 +144,104 @@ export default function TentangKami() {
 
       {/* ============ CONTENT SECTION ============ */}
       <section style={{ 
-        padding: "80px 20px", 
-        display: "flex", 
-        flexDirection: "column", 
-        alignItems: "center", 
+        padding: "50px 24px",
+        minHeight: "calc(100vh - 85px)",
+        background: "#fff",
+        display: "flex",
         justifyContent: "center",
-        minHeight: "60vh",
-        textAlign: "center",
-        background: "#f4faf7",
-        margin: "24px 60px",
-        borderRadius: "24px",
+        alignItems: "flex-start",
         position: "relative",
-        overflow: "hidden"
+        overflowY: "auto"
       }}>
-        {/* Decorative background similar to hero */}
         <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/design-assets/hero-pattern.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px",
-          opacity: 0.04,
-          pointerEvents: "none"
-        }}></div>
-
-        <h1 style={{ 
-          fontSize: "36px", 
-          color: "#0d6e3f", 
-          fontWeight: "700", 
-          marginBottom: "16px",
-          zIndex: 2
+          maxWidth: "900px",
+          width: "100%",
+          background: "#f4faf7",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow: "0 10px 30px rgba(13, 110, 63, 0.03)",
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "24px"
         }}>
-          Tentang Kami
-        </h1>
-        
-        <p style={{ 
-          fontSize: "16px", 
-          color: "#555", 
-          maxWidth: "600px", 
-          lineHeight: "1.6",
-          marginBottom: "32px",
-          zIndex: 2
-        }}>
-          Halaman Tentang Kami sedang dalam tahap pengembangan. Di sini nantinya Anda akan menemukan informasi lengkap mengenai sejarah, visi, misi, dan nilai-nilai luhur dari Sekolah & Ponpes Al-Bahjah.
-        </p>
+          {/* Header */}
+          <div style={{ textAlign: "center", borderBottom: "2px solid #e2f0e9", paddingBottom: "20px" }}>
+            <h1 style={{ fontSize: "28px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>
+              Profil Unit Pendidikan
+            </h1>
+            <p style={{ fontSize: "14px", color: "#666" }}>
+              Jenjang Pendidikan Formal di Sekolah & Ponpes Al-Bahjah Cirebon
+            </p>
+          </div>
 
-        <Link href="/" className="hero-btn" style={{ textDecoration: "none", zIndex: 2 }}>
-          Kembali ke Beranda
-        </Link>
+          {/* Unit List */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+            
+            {/* SDIQu */}
+            <div style={{ background: "#fff", padding: "24px", borderRadius: "16px", border: "1px solid #e2f0e9", display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              <div style={{ flex: "1", minWidth: "120px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <img src="/Logo-assets/sd-iqu-logo.png" alt="SDIQu Logo" style={{ width: "90px", objectFit: "contain" }} />
+              </div>
+              <div style={{ flex: "4", minWidth: "250px" }}>
+                <h3 style={{ fontSize: "18px", color: "#0d6e3f", fontWeight: "700", marginBottom: "6px" }}>
+                  SDIQu (SD Islam Qur&apos;ani) Al-Bahjah
+                </h3>
+                <p style={{ fontSize: "14px", color: "#666", marginBottom: "12px", fontStyle: "italic" }}>
+                  &ldquo;Membangun dasar keimanan, akhlak mulia, dan semangat belajar sejak dini.&rdquo;
+                </p>
+                <p style={{ fontSize: "14px", color: "#444", lineHeight: "1.6" }}>
+                  Fokus utama jenjang sekolah dasar adalah membentuk karakter dasar, penanaman adab harian, pengenalan ibadah praktis, dan pencapaian hafalan Al-Qur&apos;an juz-juz awal secara lancar serta tajwid yang benar dalam suasana belajar yang menyenangkan.
+                </p>
+              </div>
+            </div>
+
+            {/* SMPIQu */}
+            <div style={{ background: "#fff", padding: "24px", borderRadius: "16px", border: "1px solid #e2f0e9", display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              <div style={{ flex: "1", minWidth: "120px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <img src="/Logo-assets/smp-iqu-logo.png" alt="SMPIQu Logo" style={{ width: "90px", objectFit: "contain" }} />
+              </div>
+              <div style={{ flex: "4", minWidth: "250px" }}>
+                <h3 style={{ fontSize: "18px", color: "#0d6e3f", fontWeight: "700", marginBottom: "6px" }}>
+                  SMPIQu (SMP Islam Qur&apos;ani) Al-Bahjah
+                </h3>
+                <p style={{ fontSize: "14px", color: "#666", marginBottom: "12px", fontStyle: "italic" }}>
+                  &ldquo;Membentuk karakter Qur&apos;ani, berpikir kritis, dan siap menghadapi tantangan.&rdquo;
+                </p>
+                <p style={{ fontSize: "14px", color: "#444", lineHeight: "1.6" }}>
+                  Santri mulai memasuki kehidupan asrama secara penuh (*boarding*). Kurikulum dirancang untuk memperkuat hafalan Al-Qur&apos;an menuju target 15-20 Juz, pendalaman dasar bahasa Arab lisan & tulisan, serta pengenalan dini kajian kitab kuning bersama pengajar berpengalaman.
+                </p>
+              </div>
+            </div>
+
+            {/* SMAIQu */}
+            <div style={{ background: "#fff", padding: "24px", borderRadius: "16px", border: "1px solid #e2f0e9", display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              <div style={{ flex: "1", minWidth: "120px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <img src="/Logo-assets/sma-iqu-logo.png" alt="SMAIQu Logo" style={{ width: "90px", objectFit: "contain" }} />
+              </div>
+              <div style={{ flex: "4", minWidth: "250px" }}>
+                <h3 style={{ fontSize: "18px", color: "#0d6e3f", fontWeight: "700", marginBottom: "6px" }}>
+                  SMAIQu (SMA Islam Qur&apos;ani) Al-Bahjah
+                </h3>
+                <p style={{ fontSize: "14px", color: "#666", marginBottom: "12px", fontStyle: "italic" }}>
+                  &ldquo;Mempersiapkan generasi unggul untuk melanjutkan pendidikan dan berkontribusi bagi umat.&rdquo;
+                </p>
+                <p style={{ fontSize: "14px", color: "#444", lineHeight: "1.6" }}>
+                  Merupakan jenjang pemantapan hafalan Al-Qur&apos;an 30 Juz secara mutqin, pendalaman kajian kitab kuning tingkat menengah, pelatihan kepemimpinan (*Qiyadah*), serta persiapan intensif menuju jenjang perguruan tinggi nasional maupun internasional (Timur Tengah).
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Action button */}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            <Link href="/" className="hero-btn" style={{ textDecoration: "none" }}>
+              Kembali ke Beranda
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function TentangKami() {
+export default function Sambutan() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
@@ -144,54 +144,92 @@ export default function TentangKami() {
 
       {/* ============ CONTENT SECTION ============ */}
       <section style={{ 
-        padding: "80px 20px", 
-        display: "flex", 
-        flexDirection: "column", 
-        alignItems: "center", 
+        padding: "50px 24px",
+        minHeight: "calc(100vh - 85px)",
+        background: "#fff",
+        display: "flex",
         justifyContent: "center",
-        minHeight: "60vh",
-        textAlign: "center",
-        background: "#f4faf7",
-        margin: "24px 60px",
-        borderRadius: "24px",
+        alignItems: "flex-start",
         position: "relative",
-        overflow: "hidden"
+        overflowY: "auto"
       }}>
-        {/* Decorative background similar to hero */}
         <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/design-assets/hero-pattern.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px",
-          opacity: 0.04,
-          pointerEvents: "none"
-        }}></div>
-
-        <h1 style={{ 
-          fontSize: "36px", 
-          color: "#0d6e3f", 
-          fontWeight: "700", 
-          marginBottom: "16px",
-          zIndex: 2
+          maxWidth: "900px",
+          width: "100%",
+          background: "#f4faf7",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow: "0 10px 30px rgba(13, 110, 63, 0.03)",
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "24px"
         }}>
-          Tentang Kami
-        </h1>
-        
-        <p style={{ 
-          fontSize: "16px", 
-          color: "#555", 
-          maxWidth: "600px", 
-          lineHeight: "1.6",
-          marginBottom: "32px",
-          zIndex: 2
-        }}>
-          Halaman Tentang Kami sedang dalam tahap pengembangan. Di sini nantinya Anda akan menemukan informasi lengkap mengenai sejarah, visi, misi, dan nilai-nilai luhur dari Sekolah & Ponpes Al-Bahjah.
-        </p>
+          {/* Header */}
+          <div style={{ textAlign: "center", borderBottom: "2px solid #e2f0e9", paddingBottom: "20px" }}>
+            <h1 style={{ fontSize: "28px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>
+              Sambutan Khadimul Ummah
+            </h1>
+            <p style={{ fontSize: "14px", color: "#666", fontStyle: "italic" }}>
+              Lembaga Pengembangan Dakwah (LPD) Al-Bahjah
+            </p>
+          </div>
 
-        <Link href="/" className="hero-btn" style={{ textDecoration: "none", zIndex: 2 }}>
-          Kembali ke Beranda
-        </Link>
+          {/* Body content with Photo */}
+          <div style={{ display: "flex", flexDirection: "row", gap: "30px", flexWrap: "wrap", alignItems: "flex-start" }}>
+            
+            {/* Photo Column */}
+            <div style={{ flex: "1", minWidth: "220px", display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+              <div style={{ 
+                width: "200px", 
+                height: "250px", 
+                borderRadius: "16px", 
+                overflow: "hidden", 
+                boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+                border: "4px solid #fff",
+                background: "#ddd" 
+              }}>
+                <img 
+                  src="/buya-yahya.jpg" 
+                  alt="Buya Yahya" 
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700" }}>Buya Yahya</h3>
+                <p style={{ fontSize: "12.5px", color: "#777", fontWeight: "500" }}>Pengasuh LPD Al-Bahjah</p>
+              </div>
+            </div>
+
+            {/* Text Column */}
+            <div style={{ flex: "2", minWidth: "300px", display: "flex", flexDirection: "column", gap: "16px" }}>
+              <p style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "600", fontStyle: "italic" }}>
+                Assalamu&apos;alaikum Warahmatullahi Wabarakatuh
+              </p>
+              <p style={{ fontSize: "14.5px", color: "#444", lineHeight: "1.7" }}>
+                Puji syukur kehadirat Allah SWT yang senantiasa melimpahkan taufiq dan hidayah-Nya. Shalawat serta salam semoga tercurah limpahkan kepada junjungan kita Nabi Besar Muhammad SAW, keluarga, sahabat, dan para pengikutnya hingga akhir zaman.
+              </p>
+              <p style={{ fontSize: "14.5px", color: "#444", lineHeight: "1.7" }}>
+                LPD Al-Bahjah hadir dengan membawa visi dakwah dan tarbiyah yang kokoh berdasarkan manhaj Ahlus Sunnah wal Jama&apos;ah. Di unit pendidikan formal kami (SDIQu, SMPIQu, SMAIQu), kami berkomitmen untuk melahirkan para penghafal Al-Qur&apos;an yang tidak hanya unggul secara akademis, tetapi juga memiliki akhlak mulia dan kedalaman ilmu agama (*Tafaqquh Fiddin*).
+              </p>
+              <p style={{ fontSize: "14.5px", color: "#444", lineHeight: "1.7" }}>
+                Kami mengajak para orang tua untuk bersama-sama mendidik putra-putri kita menjadi generasi tangguh penyambung lidah dakwah Baginda Nabi Muhammad SAW. Semoga ikhtiar mulia ini senantiasa diridhai dan dimudahkan oleh Allah SWT.
+              </p>
+              <p style={{ fontSize: "14.5px", color: "#0d6e3f", fontWeight: "600", fontStyle: "italic" }}>
+                Wassalamu&apos;alaikum Warahmatullahi Wabarakatuh
+              </p>
+            </div>
+
+          </div>
+
+          {/* Action button */}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            <Link href="/" className="hero-btn" style={{ textDecoration: "none" }}>
+              Kembali ke Beranda
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

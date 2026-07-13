@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function TentangKami() {
+export default function Sejarah() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
@@ -144,54 +144,131 @@ export default function TentangKami() {
 
       {/* ============ CONTENT SECTION ============ */}
       <section style={{ 
-        padding: "80px 20px", 
-        display: "flex", 
-        flexDirection: "column", 
-        alignItems: "center", 
+        padding: "50px 24px",
+        minHeight: "calc(100vh - 85px)",
+        background: "#fff",
+        display: "flex",
         justifyContent: "center",
-        minHeight: "60vh",
-        textAlign: "center",
-        background: "#f4faf7",
-        margin: "24px 60px",
-        borderRadius: "24px",
+        alignItems: "flex-start",
         position: "relative",
-        overflow: "hidden"
+        overflowY: "auto"
       }}>
-        {/* Decorative background similar to hero */}
         <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: "url('/design-assets/hero-pattern.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px",
-          opacity: 0.04,
-          pointerEvents: "none"
-        }}></div>
-
-        <h1 style={{ 
-          fontSize: "36px", 
-          color: "#0d6e3f", 
-          fontWeight: "700", 
-          marginBottom: "16px",
-          zIndex: 2
+          maxWidth: "900px",
+          width: "100%",
+          background: "#f4faf7",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow: "0 10px 30px rgba(13, 110, 63, 0.03)",
+          position: "relative",
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: "24px"
         }}>
-          Tentang Kami
-        </h1>
-        
-        <p style={{ 
-          fontSize: "16px", 
-          color: "#555", 
-          maxWidth: "600px", 
-          lineHeight: "1.6",
-          marginBottom: "32px",
-          zIndex: 2
-        }}>
-          Halaman Tentang Kami sedang dalam tahap pengembangan. Di sini nantinya Anda akan menemukan informasi lengkap mengenai sejarah, visi, misi, dan nilai-nilai luhur dari Sekolah & Ponpes Al-Bahjah.
-        </p>
+          {/* Header */}
+          <div style={{ textAlign: "center", borderBottom: "2px solid #e2f0e9", paddingBottom: "20px" }}>
+            <h1 style={{ fontSize: "28px", color: "#0d6e3f", fontWeight: "700", marginBottom: "8px" }}>
+              Sejarah & Profil Yayasan
+            </h1>
+            <p style={{ fontSize: "14px", color: "#666" }}>
+              Perjalanan LPD Al-Bahjah Cirebon dari Masa ke Masa
+            </p>
+          </div>
 
-        <Link href="/" className="hero-btn" style={{ textDecoration: "none", zIndex: 2 }}>
-          Kembali ke Beranda
-        </Link>
+          {/* Timeline & History */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            
+            <p style={{ fontSize: "15px", color: "#444", lineHeight: "1.7" }}>
+              Lembaga Pengembangan Dakwah (LPD) Al-Bahjah Cirebon didirikan oleh <strong>Buya Yahya (K.H. Yahya Zainul Ma&apos;arif)</strong> dengan tujuan utama menyebarkan dakwah Islam yang rahmatan lil &apos;alamin, serta membangun sistem tarbiyah yang berlandaskan keluhuran budi pekerti (*akhlakul karimah*) dan pemahaman agama yang mendalam.
+            </p>
+
+            <div style={{ marginTop: "10px", display: "flex", flexDirection: "column", gap: "20px", position: "relative" }}>
+              
+              {/* Timeline Item 1 */}
+              <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <div style={{ 
+                  background: "#0d6e3f", 
+                  color: "#fff", 
+                  padding: "6px 14px", 
+                  borderRadius: "20px", 
+                  fontSize: "13px", 
+                  fontWeight: "600",
+                  whiteSpace: "nowrap"
+                }}>
+                  Masa Awal
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "4px" }}>
+                    Majelis Taklim & Dakwah Keliling
+                  </h4>
+                  <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.6" }}>
+                    Perjalanan dimulai dari majelis-majelis taklim kecil dan dakwah dari satu masjid ke masjid lain di wilayah Cirebon dan sekitarnya oleh Buya Yahya untuk membangun fondasi keimanan umat.
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline Item 2 */}
+              <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <div style={{ 
+                  background: "#0d6e3f", 
+                  color: "#fff", 
+                  padding: "6px 14px", 
+                  borderRadius: "20px", 
+                  fontSize: "13px", 
+                  fontWeight: "600",
+                  whiteSpace: "nowrap"
+                }}>
+                  Pendirian LPD
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "4px" }}>
+                    Peresmian LPD Al-Bahjah Cirebon 1 (Pusat)
+                  </h4>
+                  <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.6" }}>
+                    Seiring bertambahnya jumlah jemaah dan kebutuhan akan pendidikan Islam yang terstruktur, didirikanlah kompleks pusat Al-Bahjah di Sendang, Sumber, Cirebon sebagai wadah dakwah, sosial, dan tarbiyah.
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline Item 3 */}
+              <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <div style={{ 
+                  background: "#0d6e3f", 
+                  color: "#fff", 
+                  padding: "6px 14px", 
+                  borderRadius: "20px", 
+                  fontSize: "13px", 
+                  fontWeight: "600",
+                  whiteSpace: "nowrap"
+                }}>
+                  Pendidikan Formal
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "16px", color: "#0d6e3f", fontWeight: "700", marginBottom: "4px" }}>
+                    SDIQu, SMPIQu, & SMAIQu Al-Bahjah
+                  </h4>
+                  <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.6" }}>
+                    Membuka pintu pendidikan formal berkonsep berasrama (*boarding*) berbasis Al-Qur&apos;an untuk melahirkan generasi mutafaqqih fiddin yang ahli sains dan teknologi serta hafal Al-Qur&apos;an 30 Juz.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <p style={{ fontSize: "15px", color: "#444", lineHeight: "1.7", marginTop: "10px" }}>
+              Kini, LPD Al-Bahjah Cirebon telah tumbuh menjadi salah satu pusat rujukan pendidikan Islam terbaik di Jawa Barat dengan ribuan santri aktif dan puluhan cabang LPD Al-Bahjah di seluruh pelosok Nusantara.
+            </p>
+
+          </div>
+
+          {/* Action button */}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            <Link href="/" className="hero-btn" style={{ textDecoration: "none" }}>
+              Kembali ke Beranda
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );
