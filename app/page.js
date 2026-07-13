@@ -70,12 +70,17 @@ export default function Home() {
           <a href="#">Kontak</a>
         </div>
 
-        <button className="navbar-cta">
+        <a
+          href="https://wa.me/6281318223521"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar-cta"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
           Hubungi Kami
-        </button>
+        </a>
       </nav>
 
       {/* ============ HERO SECTION ============ */}
@@ -87,14 +92,21 @@ export default function Home() {
             <div className="hero-left-content">
               <h2>Sekolah & Ponpes Al-Bahjah<br />Cabang Cirebon 1 (Pusat)</h2>
               <p>Membentuk generasi Qur&apos;ani, berakhlak mulia, berilmu dan berprestasi untuk masa depan yang lebih baik.</p>
-              <Link href="/tentang-kami" className="hero-btn">
-                <span className="hero-btn-play-icon">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-                Kenal Lebih Dekat
-              </Link>
+              <div className="hero-cta-wrapper">
+                <img
+                  src="/Logo-assets/icon-logo-akreditasi-a.svg"
+                  alt="Akreditasi A"
+                  className="hero-akreditasi-logo"
+                />
+                <Link href="/tentang-kami" className="hero-btn">
+                  <span className="hero-btn-play-icon">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                  Kenal Lebih Dekat
+                </Link>
+              </div>
             </div>
           </div>
 

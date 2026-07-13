@@ -241,6 +241,20 @@ a {
   transform: translateY(-2px);
 }
 
+.hero-cta-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-akreditasi-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .hero-btn-play-icon {
   width: 22px;
   height: 22px;
