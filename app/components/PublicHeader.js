@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 export default function PublicHeader() {
   const [rootMenus, setRootMenus] = useState([]);
+  const [settings, setSettings] = useState({ logo_url: "/Logo-assets/Logo-Albahjah.png?v=3", wa_number: "+6281318223521" });
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = usePathname();
 
@@ -14,6 +15,14 @@ export default function PublicHeader() {
     fetch("/api/public/menus")
       .then(res => res.json())
       .then(data => setRootMenus(data))
+      .catch(err => console.error(err));
+
+    // Fetch settings dari API
+    fetch("/api/public/settings")
+      .then(res => res.json())
+      .then(data => {
+        if(data) setSettings(data);
+      })
       .catch(err => console.error(err));
   }, []);
 
@@ -28,7 +37,7 @@ export default function PublicHeader() {
         <div className="navbar-logo">
           <Link href="/">
             <img
-              src="/Logo-assets/Logo-Albahjah.png?v=3"
+              src={settings.logo_url}
               alt="Logo Al-Bahjah"
               className="navbar-logo-img"
               style={{ cursor: "pointer" }}
@@ -37,7 +46,7 @@ export default function PublicHeader() {
         </div>
 
         <div className="navbar-links">
-          {rootMenus.map((menu) => {
+          {Array.isArray(rootMenus) && rootMenus.map((menu) => {
             const isActive = pathname === menu.url || (menu.url !== "/" && pathname.startsWith(menu.url));
             if (menu.isDropdown && menu.children?.length > 0) {
               return (
@@ -69,7 +78,7 @@ export default function PublicHeader() {
 
         <div className="navbar-actions">
           <a
-            href="https://wa.me/6281318223521"
+            href={`https://wa.me/${settings.wa_number?.replace(/\D/g, '') || "6281318223521"}`}
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-cta"
@@ -99,7 +108,7 @@ export default function PublicHeader() {
       <div className={`navbar-drawer-overlay ${isDrawerOpen ? "open" : ""}`} onClick={() => setIsDrawerOpen(false)} />
       <div className={`navbar-drawer ${isDrawerOpen ? "open" : ""}`}>
         <div className="navbar-drawer-header">
-          <img src="/Logo-assets/Logo-Albahjah.png?v=3" alt="Logo" style={{ width: "40px", borderRadius: "8px" }} />
+          <img src={settings.logo_url} alt="Logo" style={{ width: "40px", borderRadius: "8px" }} />
           <button className="navbar-drawer-close" onClick={() => setIsDrawerOpen(false)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />

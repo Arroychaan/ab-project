@@ -21,6 +21,8 @@ model User {
   avatar    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  posts     Post[]   @relation("UserPosts")
 }
 
 // ===== CONTENT — Per Page =====
@@ -36,6 +38,21 @@ model Page {
   lastEditBy String?  // nama admin terakhir yang edit
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+// ===== BLOG / BERITA =====
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  content   String
+  thumbnail String?
+  published Boolean  @default(true)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  author    User     @relation("UserPosts", fields: [authorId], references: [id])
 }
 
 // ===== MENU — Navigasi Dinamis =====
@@ -65,4 +82,10 @@ model MediaFile {
   width        Int?     
   height       Int?
   createdAt    DateTime @default(now())
+}
+
+// ===== PENGATURAN GLOBAL (WEB SETTINGS) =====
+model WebSetting {
+  key   String @id
+  value String
 }

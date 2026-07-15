@@ -1,137 +1,58 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { auth } from "@/auth";
-import { v2 as cloudinary } from "cloudinary";
+import { NextResponse } from 'next/server';
+import cloudinary from '@/lib/cloudinary';
+import { prisma } from '@/lib/prisma';
 
-// Konfigurasi Cloudinary dari .env.local
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "demo",
-  api_key: process.env.CLOUDINARY_API_KEY || "dummy_api_key",
-  api_secret: process.env.CLOUDINARY_API_SECRET || "dummy_api_secret",
-});
-
-export async function GET() {
+export async function POST(req) {
   try {
-    const session = await auth();
-    if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-    const media = await prisma.mediaFile.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-
-    return NextResponse.json({ success: true, media });
-  } catch (error) {
-    console.error("GET media error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-  }
-}
-
-export async function POST(request) {
-  try {
-    const session = await auth();
-    if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-    const formData = await request.formData();
-    const file = formData.get("file");
+    const formData = await req.formData();
+    const file = formData.get('file');
 
     if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+      return NextResponse.json({ error: 'No file found' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const originalName = file.name;
-    const isImage = file.type.startsWith("image/");
-    const isVideo = file.type.startsWith("video/");
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-    if (!isImage && !isVideo) {
-       return NextResponse.json({ error: "Hanya gambar dan video yang diperbolehkan" }, { status: 400 });
-    }
-
-    // Upload to Cloudinary using upload_stream
+    // Upload to Cloudinary via stream
     const uploadResult = await new Promise((resolve, reject) => {
-      const uploadOptions = {
-        folder: "albahjah",
-        resource_type: isVideo ? "video" : "image",
-      };
-
-      // Optimasi gambar jika image (resize max 1920 dan konversi otomatis ke webp)
-      if (isImage) {
-        uploadOptions.format = "webp";
-        uploadOptions.transformation = [
-          { width: 1920, crop: "limit" }, // Resize max width
-          { quality: "auto" } // Auto optimize quality
-        ];
-      }
-
-      const stream = cloudinary.uploader.upload_stream(
-        uploadOptions,
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { folder: 'albahjah-media' },
         (error, result) => {
           if (error) reject(error);
           else resolve(result);
         }
       );
-      
-      stream.end(buffer);
+      uploadStream.end(buffer);
     });
 
-    // Save metadata to DB
+    // Save to DB
     const media = await prisma.mediaFile.create({
       data: {
-        filename: uploadResult.public_id, // Gunakan public_id Cloudinary sebagai referensi untuk menghapus nanti
-        originalName: originalName,
+        filename: uploadResult.public_id,
+        originalName: file.name,
         mimeType: file.type,
-        size: uploadResult.bytes,
-        path: uploadResult.secure_url, // URL publik dari Cloudinary
+        size: file.size,
+        path: uploadResult.secure_url,
         width: uploadResult.width,
         height: uploadResult.height,
-      },
+      }
     });
 
-    return NextResponse.json({ success: true, media }, { status: 201 });
+    return NextResponse.json(media);
   } catch (error) {
-    console.error("POST media error:", error);
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    console.error(error);
+    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 }
 
-export async function DELETE(request) {
+export async function GET() {
   try {
-    const session = await auth();
-    if (!session?.user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id");
-
-    if (!id) {
-      return NextResponse.json({ error: "Missing media ID" }, { status: 400 });
-    }
-
-    const media = await prisma.mediaFile.findUnique({
-      where: { id },
+    const files = await prisma.mediaFile.findMany({
+      orderBy: { createdAt: 'desc' }
     });
-
-    if (!media) {
-      return NextResponse.json({ error: "Media not found" }, { status: 404 });
-    }
-
-    // Hapus file dari Cloudinary
-    if (media.filename) {
-      try {
-        const resourceType = media.mimeType.startsWith("video/") ? "video" : "image";
-        await cloudinary.uploader.destroy(media.filename, { resource_type: resourceType });
-      } catch (cloudError) {
-        console.warn("Failed to delete file from Cloudinary:", cloudError);
-      }
-    }
-
-    // Delete from DB
-    await prisma.mediaFile.delete({
-      where: { id },
-    });
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json(files);
   } catch (error) {
-    console.error("DELETE media error:", error);
-    return NextResponse.json({ error: "Deletion failed" }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch media' }, { status: 500 });
   }
 }

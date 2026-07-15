@@ -450,6 +450,98 @@ textarea.adm-input {
   font-weight: 500;
 }
 
+/* --- TABLES --- */
+.adm-table-container {
+  overflow-x: auto;
+  border-radius: var(--adm-radius);
+  border: 1px solid var(--adm-border);
+}
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  text-align: left;
+}
+
+.adm-table th {
+  background-color: var(--adm-secondary);
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--adm-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: var(--adm-text);
+  border-bottom: 1px solid var(--adm-border);
+  vertical-align: middle;
+}
+
+.adm-table tr:last-child td {
+  border-bottom: none;
+}
+
+.adm-table tr:hover td {
+  background-color: var(--adm-secondary);
+}
+
+/* --- BADGES --- */
+.adm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.adm-badge-success { background: #dcfce7; color: #166534; }
+.adm-badge-warning { background: #fef9c3; color: #854d0e; }
+.adm-badge-danger { background: #fee2e2; color: #991b1b; }
+.adm-badge-info { background: #e0f2fe; color: #075985; }
+
+/* --- MEDIA GRID --- */
+.adm-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.adm-media-card {
+  background: white;
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--adm-shadow-md);
+}
+
+.adm-media-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background-color: #f1f5f9;
+}
+
+.adm-media-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid var(--adm-border);
+}
+
 /* --- LOGIN PAGE --- */
 .adm-login-wrapper {
   min-height: 100vh;

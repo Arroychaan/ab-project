@@ -50,52 +50,7 @@ export default function Home() {
 
   return (
     <div className="app-container">
-            aria-label="Buka Menu"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
-      </nav>
 
-      {/* ============ MOBILE DRAWER ============ */}
-      <div 
-        className={`navbar-drawer-overlay ${isDrawerOpen ? "open" : ""}`} 
-        onClick={() => setIsDrawerOpen(false)}
-      />
-      <div className={`navbar-drawer ${isDrawerOpen ? "open" : ""}`}>
-        <div className="navbar-drawer-header">
-          <img
-            src="/Logo-assets/Logo-Albahjah.png?v=3"
-            alt="Logo Al-Bahjah"
-            className="navbar-drawer-logo"
-          />
-          <button 
-            className="navbar-drawer-close" 
-            onClick={() => setIsDrawerOpen(false)}
-            aria-label="Tutup Menu"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="navbar-drawer-links">
-          <Link href="/" className="navbar-drawer-link active" onClick={() => setIsDrawerOpen(false)}>
-            Beranda
-          </Link>
-          
-          {/* Accordion Tentang Kami */}
-          <div>
-            <button 
-              className={`navbar-drawer-accordion-btn ${isAccordionOpen ? "open" : ""}`}
-              onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-            >
       {/* ============ HERO SECTION ============ */}
       <section className="hero">
         <div className="hero-container">

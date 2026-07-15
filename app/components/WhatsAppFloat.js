@@ -9,6 +9,16 @@ export default function WhatsAppFloat() {
   const lottieRef = useRef(null);
   const animInstance = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [waLink, setWaLink] = useState("https://whatsapp.com/channel/0029VbBbIRWJkK74Ms899h1j");
+
+  useEffect(() => {
+    fetch("/api/public/settings")
+      .then(res => res.json())
+      .then(data => {
+        if(data && data.wa_link) setWaLink(data.wa_link);
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   // Jangan tampilkan di halaman admin
   if (pathname?.startsWith("/admin")) {
@@ -48,7 +58,7 @@ export default function WhatsAppFloat() {
   const handleOpen = () => setShowPopup(true);
   const handleClose = () => setShowPopup(false);
   const handleConfirm = () => {
-    window.open("https://whatsapp.com/channel/0029VbBbIRWJkK74Ms899h1j", "_blank", "noopener,noreferrer");
+    window.open(waLink, "_blank", "noopener,noreferrer");
     setShowPopup(false);
   };
 

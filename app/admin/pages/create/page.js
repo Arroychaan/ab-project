@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import dynamic from "next/dynamic";
+import "react-quill-new/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 export default function CreatePageBuilder() {
   const router = useRouter();
@@ -66,6 +70,16 @@ export default function CreatePageBuilder() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const quillModules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'image'],
+      ['clean']
+    ],
   };
 
   return (
@@ -143,13 +157,15 @@ export default function CreatePageBuilder() {
             </div>
           </div>
         ) : (
-          <div className="adm-form-group">
-            <label>Konten Halaman (Teks Bebas / HTML Dasar)</label>
-            <textarea className="adm-input" value={content} onChange={e => setContent(e.target.value)} placeholder="Tuliskan isi halaman di sini..." rows={15} required />
+          <div className="adm-form-group" style={{ paddingBottom: "40px" }}>
+            <label>Konten Halaman (Visual Editor)</label>
+            <div style={{ backgroundColor: "white", borderRadius: "8px" }}>
+              <ReactQuill theme="snow" value={content} onChange={setContent} modules={quillModules} style={{ height: "300px" }} />
+            </div>
           </div>
         )}
 
-        <div style={{ marginTop: "32px", display: "flex", justifyContent: "flex-end", gap: "16px" }}>
+        <div style={{ marginTop: "48px", display: "flex", justifyContent: "flex-end", gap: "16px" }}>
           <button type="button" onClick={() => router.push("/admin/pages")} className="adm-btn adm-btn-secondary">
             Batal
           </button>
