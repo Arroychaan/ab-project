@@ -130,7 +130,38 @@ async function main() {
   console.log("\n🎉 Seeding complete!");
 }
 
+async function seedMenus() {
+  const existingMenus = await prisma.menu.count();
+  if (existingMenus > 0) {
+    console.log(`⚠️  Menus already exist. Skipping menu seed.`);
+    return;
+  }
+
+  // Root menus
+  const beranda = await prisma.menu.create({ data: { label: "Beranda", url: "/", order: 1 } });
+  
+  const tentangKami = await prisma.menu.create({ 
+    data: { label: "Tentang Kami", isDropdown: true, order: 2 } 
+  });
+  
+  // Tentang Kami Dropdowns
+  await prisma.menu.create({ data: { label: "Sambutan Pengasuh", url: "/sambutan", parentId: tentangKami.id, order: 1 } });
+  await prisma.menu.create({ data: { label: "Sejarah & Profil Yayasan", url: "/sejarah", parentId: tentangKami.id, order: 2 } });
+  await prisma.menu.create({ data: { label: "Visi, Misi & 3 Pilar", url: "/visi-misi", parentId: tentangKami.id, order: 3 } });
+  await prisma.menu.create({ data: { label: "Profil Unit Pendidikan", url: "/unit", parentId: tentangKami.id, order: 4 } });
+  await prisma.menu.create({ data: { label: "Agenda Harian Santri", url: "/agenda", parentId: tentangKami.id, order: 5 } });
+
+  // Other root menus
+  await prisma.menu.create({ data: { label: "Sekolah", url: "/sekolah", order: 3 } });
+  await prisma.menu.create({ data: { label: "Program", url: "/program", order: 4 } });
+  await prisma.menu.create({ data: { label: "Berita", url: "/berita", order: 5 } });
+  await prisma.menu.create({ data: { label: "Kontak", url: "/kontak", order: 6 } });
+
+  console.log(`✅ Initial Menus seeded successfully!`);
+}
+
 main()
+  .then(seedMenus)
   .catch((e) => {
     console.error("❌ Seed error:", e);
     process.exit(1);

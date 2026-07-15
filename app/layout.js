@@ -1,5 +1,7 @@
 import "./globals.css";
 import WhatsAppFloat from "./components/WhatsAppFloat";
+import PublicHeader from "./components/PublicHeader";
+import HeaderWrapper from "./components/HeaderWrapper";
 
 export const metadata = {
   title: "IQU - Islamic Quran University",
@@ -10,6 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body>
+        <HeaderWrapper>
+          <PublicHeader />
+        </HeaderWrapper>
         {children}
         <WhatsAppFloat />
       </body>

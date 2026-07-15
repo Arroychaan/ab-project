@@ -50,62 +50,6 @@ export default function Home() {
 
   return (
     <div className="app-container">
-      {/* ============ NAVBAR ============ */}
-      <nav className="navbar">
-        <div className="navbar-logo">
-          <Link href="/">
-            <img
-              src="/Logo-assets/Logo-Albahjah.png?v=3"
-              alt="Logo Al-Bahjah"
-              className="navbar-logo-img"
-              style={{ cursor: "pointer" }}
-            />
-          </Link>
-        </div>
-
-        <div className="navbar-links">
-          <Link href="/" className="active">Beranda</Link>
-          
-          {/* Dropdown Tentang Kami */}
-          <div className="navbar-item dropdown">
-            <span className="navbar-link-dropdown">
-              Tentang Kami
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </span>
-            <div className="navbar-dropdown-menu">
-              <Link href="/tentang-kami/sambutan" className="navbar-dropdown-item">Sambutan Pengasuh</Link>
-              <Link href="/tentang-kami/sejarah" className="navbar-dropdown-item">Sejarah & Profil Yayasan</Link>
-              <Link href="/tentang-kami/visi-misi" className="navbar-dropdown-item">Visi, Misi & 3 Pilar</Link>
-              <Link href="/tentang-kami/unit" className="navbar-dropdown-item">Profil Unit Pendidikan</Link>
-              <Link href="/tentang-kami/agenda" className="navbar-dropdown-item">Agenda Harian Santri</Link>
-            </div>
-          </div>
-
-          <a href="#">Sekolah</a>
-          <a href="#">Program</a>
-          <a href="#">Berita</a>
-          <a href="#">Kontak</a>
-        </div>
-
-        <div className="navbar-actions">
-          <a
-            href="https://wa.me/6281318223521"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="navbar-cta"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            Hubungi Kami
-          </a>
-
-          {/* Hamburger Menu Button */}
-          <button 
-            className="navbar-hamburger" 
-            onClick={() => setIsDrawerOpen(true)}
             aria-label="Buka Menu"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -152,37 +96,6 @@ export default function Home() {
               className={`navbar-drawer-accordion-btn ${isAccordionOpen ? "open" : ""}`}
               onClick={() => setIsAccordionOpen(!isAccordionOpen)}
             >
-              Tentang Kami
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-            <div className={`navbar-drawer-accordion-content ${isAccordionOpen ? "open" : ""}`}>
-              <Link href="/tentang-kami/sambutan" className="navbar-drawer-sublink" onClick={() => setIsDrawerOpen(false)}>
-                Sambutan Pengasuh
-              </Link>
-              <Link href="/tentang-kami/sejarah" className="navbar-drawer-sublink" onClick={() => setIsDrawerOpen(false)}>
-                Sejarah & Profil Yayasan
-              </Link>
-              <Link href="/tentang-kami/visi-misi" className="navbar-drawer-sublink" onClick={() => setIsDrawerOpen(false)}>
-                Visi, Misi & 3 Pilar
-              </Link>
-              <Link href="/tentang-kami/unit" className="navbar-drawer-sublink" onClick={() => setIsDrawerOpen(false)}>
-                Profil Unit Pendidikan
-              </Link>
-              <Link href="/tentang-kami/agenda" className="navbar-drawer-sublink" onClick={() => setIsDrawerOpen(false)}>
-                Agenda Harian Santri
-              </Link>
-            </div>
-          </div>
-
-          <a href="#" className="navbar-drawer-link" onClick={() => setIsDrawerOpen(false)}>Sekolah</a>
-          <a href="#" className="navbar-drawer-link" onClick={() => setIsDrawerOpen(false)}>Program</a>
-          <a href="#" className="navbar-drawer-link" onClick={() => setIsDrawerOpen(false)}>Berita</a>
-          <a href="#" className="navbar-drawer-link" onClick={() => setIsDrawerOpen(false)}>Kontak</a>
-        </div>
-      </div>
-
       {/* ============ HERO SECTION ============ */}
       <section className="hero">
         <div className="hero-container">

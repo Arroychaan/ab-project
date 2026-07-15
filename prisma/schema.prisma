@@ -26,24 +26,43 @@ model User {
 // ===== CONTENT — Per Page =====
 model Page {
   id         String   @id @default(cuid())
-  slug       String   @unique // "sambutan", "sejarah", "visi-misi", "unit", "agenda"
+  slug       String   @unique // "sambutan", "sejarah", "visi-misi", "unit", "agenda", atau bebas
   title      String
   subtitle   String?
+  layout     String   @default("STANDARD") // "STANDARD", "HERO_IMAGE", "FULL_WIDTH", "BLANK"
   data       String   // JSON string — flexible per-page content
+  customCss  String?  // Untuk Mode Developer: Injeksi CSS Khusus
+  customHtml String?  // Untuk Mode Developer: Injeksi HTML Khusus
   lastEditBy String?  // nama admin terakhir yang edit
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
 
+// ===== MENU — Navigasi Dinamis =====
+model Menu {
+  id         String   @id @default(cuid())
+  label      String   // Nama menu (Misal: "Beranda", "Tentang Kami")
+  url        String?  // URL link (Misal: "/tentang-kami/sejarah")
+  parentId   String?  // ID dari parent jika ini adalah dropdown
+  order      Int      @default(0) // Urutan tampilan (0, 1, 2, dst)
+  isDropdown Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Self-relation untuk menu bertingkat
+  parent     Menu?    @relation("SubMenus", fields: [parentId], references: [id])
+  children   Menu[]   @relation("SubMenus")
+}
+
 // ===== MEDIA — Gambar & Video =====
 model MediaFile {
   id           String   @id @default(cuid())
-  filename     String   // nama file di disk
-  originalName String   // nama file asli dari upload
-  mimeType     String   // "image/jpeg", "image/webp", "video/mp4", dll
-  size         Int      // ukuran dalam bytes
-  path         String   // path relatif, misal "/uploads/abc123.webp"
-  width        Int?     // dimensi (hanya untuk gambar)
+  filename     String   
+  originalName String   
+  mimeType     String   
+  size         Int      
+  path         String   
+  width        Int?     
   height       Int?
   createdAt    DateTime @default(now())
 }
