@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
-import path from "path";
-import fs from "fs/promises";
-import sharp from "sharp";
+import { v2 as cloudinary } from "cloudinary";
+
+// Konfigurasi Cloudinary dari .env.local
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "demo",
+  api_key: process.env.CLOUDINARY_API_KEY || "dummy_api_key",
+  api_secret: process.env.CLOUDINARY_API_SECRET || "dummy_api_secret",
+});
 
 export async function GET() {
   try {
@@ -36,49 +41,49 @@ export async function POST(request) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const originalName = file.name;
     const isImage = file.type.startsWith("image/");
-    
-    // Create uploads dir if it doesn't exist
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    await fs.mkdir(uploadsDir, { recursive: true });
+    const isVideo = file.type.startsWith("video/");
 
-    let finalFilename = `${Date.now()}-${originalName.replace(/\s+/g, "-")}`;
-    let finalPath = path.join(uploadsDir, finalFilename);
-    let publicPath = `/uploads/${finalFilename}`;
-    let mimeType = file.type;
-    let size = buffer.length;
-    let width = null;
-    let height = null;
-
-    if (isImage) {
-      // Process with sharp for images (resize max 1920px wide, convert to webp for optimization)
-      finalFilename = `${Date.now()}-${path.parse(originalName).name.replace(/\s+/g, "-")}.webp`;
-      finalPath = path.join(uploadsDir, finalFilename);
-      publicPath = `/uploads/${finalFilename}`;
-      mimeType = "image/webp";
-      
-      const processedImage = await sharp(buffer)
-        .resize(1920, 1920, { fit: "inside", withoutEnlargement: true })
-        .webp({ quality: 80 })
-        .toFile(finalPath);
-        
-      size = processedImage.size;
-      width = processedImage.width;
-      height = processedImage.height;
-    } else {
-      // For videos or other files, just save directly
-      await fs.writeFile(finalPath, buffer);
+    if (!isImage && !isVideo) {
+       return NextResponse.json({ error: "Hanya gambar dan video yang diperbolehkan" }, { status: 400 });
     }
+
+    // Upload to Cloudinary using upload_stream
+    const uploadResult = await new Promise((resolve, reject) => {
+      const uploadOptions = {
+        folder: "albahjah",
+        resource_type: isVideo ? "video" : "image",
+      };
+
+      // Optimasi gambar jika image (resize max 1920 dan konversi otomatis ke webp)
+      if (isImage) {
+        uploadOptions.format = "webp";
+        uploadOptions.transformation = [
+          { width: 1920, crop: "limit" }, // Resize max width
+          { quality: "auto" } // Auto optimize quality
+        ];
+      }
+
+      const stream = cloudinary.uploader.upload_stream(
+        uploadOptions,
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
+      
+      stream.end(buffer);
+    });
 
     // Save metadata to DB
     const media = await prisma.mediaFile.create({
       data: {
-        filename: finalFilename,
+        filename: uploadResult.public_id, // Gunakan public_id Cloudinary sebagai referensi untuk menghapus nanti
         originalName: originalName,
-        mimeType: mimeType,
-        size: size,
-        path: publicPath,
-        width: width,
-        height: height,
+        mimeType: file.type,
+        size: uploadResult.bytes,
+        path: uploadResult.secure_url, // URL publik dari Cloudinary
+        width: uploadResult.width,
+        height: uploadResult.height,
       },
     });
 
@@ -109,12 +114,14 @@ export async function DELETE(request) {
       return NextResponse.json({ error: "Media not found" }, { status: 404 });
     }
 
-    // Delete file from disk
-    const filePath = path.join(process.cwd(), "public", media.path);
-    try {
-      await fs.unlink(filePath);
-    } catch (fsError) {
-      console.warn("Failed to delete file from disk:", fsError);
+    // Hapus file dari Cloudinary
+    if (media.filename) {
+      try {
+        const resourceType = media.mimeType.startsWith("video/") ? "video" : "image";
+        await cloudinary.uploader.destroy(media.filename, { resource_type: resourceType });
+      } catch (cloudError) {
+        console.warn("Failed to delete file from Cloudinary:", cloudError);
+      }
     }
 
     // Delete from DB
