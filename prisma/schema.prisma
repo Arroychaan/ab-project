@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ===== AUTH — Multi Admin =====
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String   // bcrypt hashed
+  role      String   @default("ADMIN") // ADMIN or SUPER_ADMIN
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ===== CONTENT — Per Page =====
+model Page {
+  id         String   @id @default(cuid())
+  slug       String   @unique // "sambutan", "sejarah", "visi-misi", "unit", "agenda"
+  title      String
+  subtitle   String?
+  data       String   // JSON string — flexible per-page content
+  lastEditBy String?  // nama admin terakhir yang edit
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// ===== MEDIA — Gambar & Video =====
+model MediaFile {
+  id           String   @id @default(cuid())
+  filename     String   // nama file di disk
+  originalName String   // nama file asli dari upload
+  mimeType     String   // "image/jpeg", "image/webp", "video/mp4", dll
+  size         Int      // ukuran dalam bytes
+  path         String   // path relatif, misal "/uploads/abc123.webp"
+  width        Int?     // dimensi (hanya untuk gambar)
+  height       Int?
+  createdAt    DateTime @default(now())
+}
