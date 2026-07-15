@@ -1,12 +1,19 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import lottie from "lottie-web";
 
 export default function WhatsAppFloat() {
+  const pathname = usePathname();
   const lottieRef = useRef(null);
   const animInstance = useRef(null);
   const [showPopup, setShowPopup] = useState(false);
+
+  // Jangan tampilkan di halaman admin
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   useEffect(() => {
     if (lottieRef.current && !animInstance.current) {

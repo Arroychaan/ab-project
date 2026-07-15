@@ -81,7 +81,7 @@ const icons = {
   ),
 };
 
-export default function AdminSidebar({ isMobileOpen, onCloseMobile }) {
+export default function AdminSidebar({ isMobileOpen, onCloseMobile, userRole }) {
   const pathname = usePathname();
 
   return (
@@ -109,6 +109,11 @@ export default function AdminSidebar({ isMobileOpen, onCloseMobile }) {
             <div key={section.label}>
               <div className="adm-sidebar-label">{section.label}</div>
               {section.items.map((item) => {
+                // Sembunyikan Kelola Admin jika bukan SUPER_ADMIN
+                if (item.href === "/admin/users" && userRole !== "SUPER_ADMIN") {
+                  return null;
+                }
+
                 const isActive =
                   item.href === "/admin"
                     ? pathname === "/admin"

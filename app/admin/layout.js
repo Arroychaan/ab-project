@@ -39,6 +39,7 @@ function AdminLayoutInner({ children }) {
       <AdminSidebar
         isMobileOpen={isMobileOpen}
         onCloseMobile={() => setIsMobileOpen(false)}
+        userRole={session?.user?.role}
       />
 
       <div className="adm-main">
