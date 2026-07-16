@@ -20,10 +20,6 @@ export default function WhatsAppFloat() {
       .catch(err => console.error(err));
   }, []);
 
-  // Jangan tampilkan di halaman admin
-  if (pathname?.startsWith("/admin")) {
-    return null;
-  }
 
   useEffect(() => {
     if (lottieRef.current && !animInstance.current) {
@@ -61,6 +57,11 @@ export default function WhatsAppFloat() {
     window.open(waLink, "_blank", "noopener,noreferrer");
     setShowPopup(false);
   };
+
+  // Jangan tampilkan di halaman admin
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>

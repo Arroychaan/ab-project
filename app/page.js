@@ -7,8 +7,6 @@ export default function Home() {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;

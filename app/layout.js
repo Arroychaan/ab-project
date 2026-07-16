@@ -4,6 +4,8 @@ import PublicHeader from "./components/PublicHeader";
 import HeaderWrapper from "./components/HeaderWrapper";
 import Footer from "./components/Footer";
 
+import FooterWrapper from "./components/FooterWrapper";
+
 export const metadata = {
   title: "IQU - Islamic Quran University",
   description: "Sekolah & Ponpes Al-Bahjah Cabang Cirebon 1 (Pusat)",
@@ -19,7 +21,9 @@ export default function RootLayout({ children }) {
           <PublicHeader />
         </HeaderWrapper>
         {children}
-        <Footer />
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
         <WhatsAppFloat />
         <Toaster position="top-right" />
       </body>

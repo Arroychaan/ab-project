@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import dynamic from "next/dynamic";
+import AIAssistant from "@/app/components/admin/AIAssistant";
 import "react-quill-new/dist/quill.snow.css";
 import Link from "next/link";
 
@@ -114,6 +115,14 @@ export default function CreatePost() {
             <img src={formData.thumbnail} alt="Preview" style={{ marginTop: "12px", height: "150px", borderRadius: "8px", objectFit: "cover" }} />
           )}
         </div>
+
+        <hr style={{ border: 0, borderTop: "1px dashed #cbd5e1", margin: "16px 0" }} />
+
+        <AIAssistant 
+          isDevMode={false} 
+          currentContent={formData.content}
+          onApplyText={(text) => setFormData({ ...formData, content: text })}
+        />
 
         <div className="adm-form-group" style={{ flex: 1, minHeight: "400px", display: "flex", flexDirection: "column" }}>
           <label>Isi Konten Berita</label>

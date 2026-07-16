@@ -37,7 +37,6 @@ export default async function Footer() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
               <li><Link href="/" style={{ color: "#a7f3d0", textDecoration: "none", fontSize: "15px" }}>Beranda</Link></li>
               <li><Link href="/berita" style={{ color: "#a7f3d0", textDecoration: "none", fontSize: "15px" }}>Berita & Artikel</Link></li>
-              <li><Link href="/admin/login" style={{ color: "#a7f3d0", textDecoration: "none", fontSize: "15px" }}>Login Admin</Link></li>
             </ul>
           </div>
 

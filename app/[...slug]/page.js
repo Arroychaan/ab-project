@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 
 // Ini adalah Catcher Route dinamis. Semua URL publik yang tidak ada foldernya akan ditangkap di sini.
 export default async function DynamicPage({ params }) {
-  // params.slug adalah array, misal: /tentang-kami/sejarah -> ["tentang-kami", "sejarah"]
-  const slugPath = params.slug.join("/");
+  const resolvedParams = await params;
+  const slugPath = resolvedParams.slug.join("/");
 
   // Cari di database berdasarkan slug
   const page = await prisma.page.findUnique({

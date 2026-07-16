@@ -596,3 +596,50 @@ textarea.adm-input {
     padding: 20px;
   }
 }
+
+/* --- QUILL EDITOR TOOLTIPS --- */
+.ql-toolbar.ql-snow button {
+  position: relative;
+}
+
+.ql-toolbar.ql-snow button:hover::after {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1e293b;
+  color: white;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  opacity: 0;
+  animation: fadeIn 0.2s forwards 0.3s; /* Delay 0.3s before showing */
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Definisi Tooltip Content untuk masing-masing tombol */
+.ql-toolbar.ql-snow button.ql-bold:hover::after { content: "Tebal (Bold)"; }
+.ql-toolbar.ql-snow button.ql-italic:hover::after { content: "Miring (Italic)"; }
+.ql-toolbar.ql-snow button.ql-underline:hover::after { content: "Garis Bawah"; }
+.ql-toolbar.ql-snow button.ql-strike:hover::after { content: "Coret (Strikethrough)"; }
+.ql-toolbar.ql-snow button.ql-list[value="ordered"]:hover::after { content: "Daftar Angka"; }
+.ql-toolbar.ql-snow button.ql-list[value="bullet"]:hover::after { content: "Daftar Titik"; }
+.ql-toolbar.ql-snow button.ql-link:hover::after { content: "Sisipkan Link"; }
+.ql-toolbar.ql-snow button.ql-image:hover::after { content: "Sisipkan Gambar"; }
+.ql-toolbar.ql-snow button.ql-clean:hover::after { content: "Hapus Format"; }
+.ql-toolbar.ql-snow .ql-picker.ql-header:hover::after { 
+  content: "Ukuran Judul (Heading)"; 
+  position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+  background-color: #1e293b; color: white; padding: 4px 8px; font-size: 11px;
+  border-radius: 4px; white-space: nowrap; pointer-events: none; z-index: 1000;
+  opacity: 0; animation: fadeIn 0.2s forwards 0.3s;
+}
