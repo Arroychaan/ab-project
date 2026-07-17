@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function DELETE(req, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const media = await prisma.mediaFile.findUnique({
       where: { id }
@@ -24,7 +24,10 @@ export async function DELETE(req, { params }) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Failed to delete media' }, { status: 500 });
+    console.error('Delete Error:', error);
+    return NextResponse.json(
+      { error: error.message || error.toString() || 'Failed to delete media' },
+      { status: 500 }
+    );
   }
 }

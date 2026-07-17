@@ -65,7 +65,8 @@ export default function MediaManager() {
         toast.success("Dihapus!", { id: toastId });
         setFiles(files.filter(f => f.id !== id));
       } else {
-        toast.error("Gagal menghapus", { id: toastId });
+        const errorData = await res.json().catch(() => ({}));
+        toast.error(errorData.error || "Gagal menghapus", { id: toastId });
       }
     } catch (e) {
       toast.error("Error", { id: toastId });
