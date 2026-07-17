@@ -45,7 +45,8 @@ export default function MediaManager() {
         toast.success("Gambar berhasil diunggah!", { id: toastId });
         fetchMedia(); // Refresh list
       } else {
-        toast.error("Gagal mengunggah", { id: toastId });
+        const errorData = await res.json().catch(() => ({}));
+        toast.error(errorData.error || "Gagal mengunggah", { id: toastId });
       }
     } catch (e) {
       toast.error("Terjadi kesalahan sistem", { id: toastId });

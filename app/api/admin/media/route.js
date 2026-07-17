@@ -41,8 +41,11 @@ export async function POST(req) {
 
     return NextResponse.json(media);
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+    console.error('Upload Error:', error);
+    return NextResponse.json(
+      { error: error.message || error.toString() || 'Upload failed' },
+      { status: 500 }
+    );
   }
 }
 
