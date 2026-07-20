@@ -56,10 +56,17 @@ export default function WebSettingsPage() {
       if (res.ok) {
         toast.success("Pengaturan berhasil disimpan!", { id: toastId });
       } else {
-        toast.error("Gagal menyimpan", { id: toastId });
+        let errorMessage = `Gagal menyimpan (${res.status})`;
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await res.text() || errorMessage;
+        }
+        toast.error(errorMessage, { id: toastId });
       }
     } catch (error) {
-      toast.error("Terjadi kesalahan sistem", { id: toastId });
+      toast.error(error.message || error.toString() || "Terjadi kesalahan sistem", { id: toastId });
     } finally {
       setIsSaving(false);
     }

@@ -45,11 +45,17 @@ export default function MediaManager() {
         toast.success("Gambar berhasil diunggah!", { id: toastId });
         fetchMedia(); // Refresh list
       } else {
-        const errorData = await res.json().catch(() => ({}));
-        toast.error(errorData.error || "Gagal mengunggah", { id: toastId });
+        let errorMessage = `Upload failed (${res.status})`;
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await res.text() || errorMessage;
+        }
+        toast.error(errorMessage, { id: toastId });
       }
     } catch (e) {
-      toast.error("Terjadi kesalahan sistem", { id: toastId });
+      toast.error(e.message || e.toString() || "Terjadi kesalahan sistem", { id: toastId });
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -65,11 +71,17 @@ export default function MediaManager() {
         toast.success("Dihapus!", { id: toastId });
         setFiles(files.filter(f => f.id !== id));
       } else {
-        const errorData = await res.json().catch(() => ({}));
-        toast.error(errorData.error || "Gagal menghapus", { id: toastId });
+        let errorMessage = `Gagal menghapus (${res.status})`;
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await res.text() || errorMessage;
+        }
+        toast.error(errorMessage, { id: toastId });
       }
     } catch (e) {
-      toast.error("Error", { id: toastId });
+      toast.error(e.message || e.toString() || "Error", { id: toastId });
     }
   };
 

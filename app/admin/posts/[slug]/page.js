@@ -91,10 +91,16 @@ export default function EditPost({ params }) {
           router.push("/admin/posts");
         }
       } else {
-        toast.error(data.error || "Gagal memperbarui", { id: toastId });
+        let errorMessage = `Gagal memperbarui (${res.status})`;
+        try {
+          errorMessage = data.error || errorMessage;
+        } catch {
+          errorMessage = errorMessage;
+        }
+        toast.error(errorMessage, { id: toastId });
       }
     } catch (error) {
-      toast.error("Terjadi kesalahan sistem", { id: toastId });
+      toast.error(error.message || error.toString() || "Terjadi kesalahan sistem", { id: toastId });
     } finally {
       setIsSubmitting(false);
     }

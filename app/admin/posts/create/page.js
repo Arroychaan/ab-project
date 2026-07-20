@@ -50,16 +50,21 @@ export default function CreatePost() {
         body: JSON.stringify(formData),
       });
 
-      const data = await res.json();
       if (res.ok) {
-        toast.success("Berita berhasil diterbitkan!", { id: toastId });
+        toast.success("Berita berhasil ditambahkan!", { id: toastId });
         router.push("/admin/posts");
-        router.refresh();
       } else {
-        toast.error(data.error || "Gagal menyimpan", { id: toastId });
+        let errorMessage = `Gagal menyimpan (${res.status})`;
+        try {
+          const errorData = await res.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          errorMessage = await res.text() || errorMessage;
+        }
+        toast.error(errorMessage, { id: toastId });
       }
     } catch (error) {
-      toast.error("Terjadi kesalahan sistem", { id: toastId });
+      toast.error(error.message || error.toString() || "Terjadi kesalahan sistem", { id: toastId });
     } finally {
       setIsSubmitting(false);
     }
