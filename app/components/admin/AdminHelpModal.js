@@ -15,7 +15,8 @@ export default function AdminHelpModal({ isOpen, onClose }) {
     { id: 'editor', label: '4. Panduan Visual Editor' },
     { id: 'media', label: '5. Panduan Lengkap Media & Upload' },
     { id: 'users', label: '6. Manajemen Admin & Setting' },
-    { id: 'faq', label: '7. Tanya Jawab (FAQ)' }
+    { id: 'faq', label: '7. Tanya Jawab (FAQ)' },
+    { id: 'tutorial_page', label: '8. Praktik: Buat Halaman Jadi!' }
   ];
 
   return (
@@ -23,10 +24,10 @@ export default function AdminHelpModal({ isOpen, onClose }) {
       <div className="adm-help-modal-container" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '1000px', height: '90vh' }}>
         <div className="adm-help-modal-header" style={{ background: 'linear-gradient(90deg, #166534 0%, #15803d 100%)', color: 'white' }}>
           <div>
-            <h2 style={{ color: 'white' }}>📚 Buku Panduan Utama & Lengkap Admin Panel</h2>
-            <p style={{ margin: "4px 0 0 0", fontSize: "14px", color: "#dcfce7" }}>
+            <h2 style={{ color: 'white' }}>📚 Panduan Utama Admin Panel</h2>
+            {/* <p style={{ margin: "4px 0 0 0", fontSize: "14px", color: "#dcfce7" }}>
               Dokumentasi komprehensif, langkah demi langkah, untuk mengelola sistem informasi Albahjah.
-            </p>
+            </p> */}
           </div>
           <button onClick={onClose} className="adm-help-close-btn" style={{ color: 'white' }} title="Tutup Panduan">&times;</button>
         </div>
@@ -51,19 +52,18 @@ export default function AdminHelpModal({ isOpen, onClose }) {
             {activeTab === 'dashboard' && (
               <div className="adm-help-tab-content">
                 <h3>1. Pengenalan Dashboard Secara Mendalam</h3>
-                <p>Selamat datang di Pusat Kontrol Website Albahjah. Dashboard ini dirancang secara khusus untuk memberikan informasi yang paling relevan pada pandangan pertama. Halaman ini adalah layar utama setelah Anda berhasil masuk (login).</p>
-                
+                <p>Selamat datang di Pusat Kontrol Website Albahjah. Halaman ini adalah layar utama setelah Anda berhasil masuk (login).</p>
                 <img src="/guide/screenshot-dashboard.jpg" alt="Dashboard" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                 
                 <div style={{ background: "#f8fafc", padding: "20px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
                   <h4 style={{ marginTop: 0 }}>Navigasi Menu Utama (Sidebar Kiri):</h4>
+                  <img src="/guide/step/sidebar.jpg" alt="Sidebar" className="adm-guide-img" style={{ maxWidth: '200px' }} onError={(e) => { e.target.style.display = 'none'; }} />
                   <ul>
-                    <li><strong>📊 Dashboard:</strong> Menampilkan analitik dasar. Anda bisa melihat secara real-time berapa total Halaman statis yang Anda miliki, berapa jumlah Berita yang telah diterbitkan, dan berapa banyak file gambar (Media) yang memakan ruang di server Cloudinary Anda.</li>
-                    <li><strong>📄 Halaman (Pages):</strong> Mengatur fondasi struktural website. Halaman statis tidak seperti artikel berita, mereka adalah bagian tetap dari situs (misal: "Sejarah Yayasan", "Profil Pengasuh", "Kontak", "Visi Misi"). </li>
-                    <li><strong>📰 Berita (Posts):</strong> Pusat publikasi artikel, kajian, informasi kegiatan, pengumuman jadwal, dan press release. Konten di sini akan muncul dengan tanggal dan nama penulis, berurutan dari yang terbaru ke terlama (kronologis).</li>
-                    <li><strong>🖼️ Media Library:</strong> Lemari arsip digital Anda. Semua aset visual (foto kegiatan, banner pendaftaran, foto tokoh, poster kajian) HARUS disimpan di sini sebelum dapat ditampilkan ke publik.</li>
-                    <li><strong>⚙️ Pengaturan Website (Hanya Super Admin):</strong> Panel kendali master. Digunakan untuk merubah identitas inti website seperti Nama Situs, Logo utama, Deskripsi Situs (untuk Google SEO), dan informasi kontak yang muncul di bagian paling bawah (Footer) website.</li>
-                    <li><strong>👥 Manajemen Admin (Hanya Super Admin):</strong> Menu untuk mendaftarkan staff baru atau menghapus akses staff lama yang sudah tidak bertugas.</li>
+                    <li><strong>📊 Dashboard:</strong> Melihat jumlah total halaman, berita, dan file media yang ada di web.</li>
+                    <li><strong>📄 Halaman (Pages):</strong> Mengatur halaman utama yang statis (contoh: Profil, Kontak).</li>
+                    <li><strong>📰 Berita (Posts):</strong> Pusat publikasi artikel, kajian, informasi kegiatan, berurutan.</li>
+                    <li><strong>🖼️ Media Library:</strong> Lemari arsip digital. Semua aset visual WAJIB disimpan di sini.</li>
+                    <li><strong>⚙️ Pengaturan Website & Manajemen Admin:</strong> Menu master untuk Super Admin.</li>
                   </ul>
                 </div>
               </div>
@@ -73,44 +73,32 @@ export default function AdminHelpModal({ isOpen, onClose }) {
               <div className="adm-help-tab-content">
                 <h3>2. Manajemen Halaman (Pages) Secara Terperinci</h3>
                 <p>Mengelola Halaman membutuhkan kehati-hatian karena halaman statis biasanya terhubung langsung dengan menu utama website di bagian navigasi atas.</p>
-                
                 <img src="/guide/screenshot-pages.jpg" alt="Daftar Halaman" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                 
                 <div style={{ background: "#eff6ff", padding: "20px", borderRadius: "8px", border: "1px solid #bfdbfe", marginBottom: "24px" }}>
-                  <h4 style={{ marginTop: 0, color: "#1e3a8a" }}>Penjelasan Detail Form "Buat Halaman Baru"</h4>
+                  <h4 style={{ marginTop: 0, color: "#1e3a8a" }}>Langkah-langkah Membuat Halaman Baru:</h4>
                   <ol style={{ color: "#1e40af", paddingLeft: "16px" }}>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>Judul Halaman (H1):</strong><br/>
-                      Ini adalah nama resmi halaman yang akan tercetak paling besar di layar pengunjung. <em>Tips: Buatlah jelas dan singkat, maksimal 3-5 kata (Contoh: "Info Pendaftaran Santri Baru").</em>
+                      <strong>Klik menu Halaman</strong> di sidebar kiri, lalu klik tombol biru <strong>+ Buat Halaman Baru</strong>.
+                      <img src="/guide/step/btn-create-page.jpg" alt="Tombol Buat Halaman" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>URL (Slug):</strong><br/>
-                      Slug adalah tautan unik (link) untuk halaman tersebut. Saat Anda mengetik Judul, slug akan terbuat secara otomatis (mengubah huruf kecil dan spasi menjadi tanda hubung). Anda <strong>bisa merubahnya</strong> jika ingin link yang lebih pendek. <br/>
-                      <em>Contoh: Judul "Info Pendaftaran Santri Baru 2026", Slug bisa Anda perpendek jadi "info-pendaftaran". URL akhirnya akan menjadi albahjah.com/info-pendaftaran. Jangan pernah memakai spasi atau simbol aneh pada slug!</em>
+                      <strong>Isi Judul Halaman dan Sub-Judul:</strong> Tulis judul yang jelas. URL Slug akan otomatis terisi menyesuaikan judul.
+                      <img src="/guide/step/form-page-top.jpg" alt="Form Judul Halaman" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>Sub-Judul (Opsional):</strong><br/>
-                      Teks tambahan yang muncul sedikit lebih kecil di bawah judul utama. Berguna untuk penjelasan tambahan. (Contoh: "Gelombang 1 dan 2 Tahun Ajaran 2026/2027"). Boleh dikosongkan.
-                    </li>
-                    <li style={{ marginBottom: "12px" }}>
-                      <strong>Pilih Layout Desain:</strong>
-                      <ul style={{ marginTop: "8px" }}>
-                        <li><strong>Standard:</strong> Tampilan klasik formal Albahjah. Menghasilkan kotak header berwarna hijau dengan judul putih di atas teks Anda. Paling cocok untuk artikel biasa dan halaman profil.</li>
-                        <li><strong>Hero Image:</strong> Halaman akan menampilkan sebuah gambar banner raksasa (full width) dari ujung ke ujung layar di bagian atas. Jika Anda memilih ini, kolom <strong>URL Gambar Hero</strong> akan muncul dan wajib diisi!</li>
-                        <li><strong>Blank Canvas:</strong> Dinding kosong. Khusus untuk developer yang ingin merancang halaman dengan kode HTML dari nol tanpa *template* apapun.</li>
-                      </ul>
+                      <strong>Pilih Layout Desain:</strong> "Standard" untuk tampilan minimalis hijau, atau "Hero Image" jika Anda ingin ada gambar besar di paling atas.
+                      <img src="/guide/step/form-page-layout.jpg" alt="Dropdown Layout" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                   </ol>
                 </div>
 
-                <img src="/guide/screenshot-page-create.jpg" alt="Buat Halaman" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
-
                 <div style={{ background: "#fef2f2", padding: "16px", borderRadius: "8px", borderLeft: "4px solid #ef4444" }}>
                   <h4 style={{ marginTop: 0, color: "#b91c1c" }}>⚠️ Mode Developer ⚡ (Peringatan Keras!)</h4>
-                  <p style={{ color: "#7f1d1d", marginBottom: 0 }}>
-                    Toggle "Mode Developer" di sudut kanan atas hanya diperuntukkan bagi Web Developer atau Programmer. 
-                    Saat diaktifkan, Anda bisa menyuntikkan kode CSS dan HTML murni. <strong>Kode yang ditulis di Mode Developer akan mengabaikan, menutupi, dan menghilangkan apapun yang Anda tulis di Mode Awam (Visual Editor).</strong> Jika Anda tidak mengerti kode, jangan pernah menyalakan toggle ini!
+                  <p style={{ color: "#7f1d1d", marginBottom: "10px" }}>
+                    Di pojok kanan atas, terdapat toggle Mode Developer. Hanya nyalakan jika Anda adalah Web Developer yang mengerti HTML/CSS. <strong>Menyalakan ini akan mengabaikan ketikan Anda di Visual Editor.</strong>
                   </p>
+                  <img src="/guide/step/dev-toggle.jpg" alt="Developer Toggle" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                 </div>
               </div>
             )}
@@ -118,72 +106,53 @@ export default function AdminHelpModal({ isOpen, onClose }) {
             {activeTab === 'posts' && (
               <div className="adm-help-tab-content">
                 <h3>3. Manajemen Berita & Publikasi Secara Detil</h3>
-                <p>Bagian ini sangat krusial karena Berita adalah nyawa dan wajah aktivitas harian institusi Anda di internet. Berita yang baik memiliki Gambar Thumbnail, Judul yang memikat, dan konten yang rapi.</p>
-                
-                <img src="/guide/screenshot-posts.jpg" alt="Daftar Berita" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
+                <p>Berita yang baik memiliki Gambar Thumbnail, Judul yang memikat, dan konten yang rapi.</p>
                 
                 <div style={{ background: "#fdf4ff", padding: "20px", borderRadius: "8px", border: "1px solid #f5d0fe", marginBottom: "24px" }}>
-                  <h4 style={{ marginTop: 0, color: "#701a75" }}>Penjelasan Detail Form "Tulis Berita Baru"</h4>
+                  <h4 style={{ marginTop: 0, color: "#701a75" }}>Langkah Menulis Berita Baru</h4>
                   <ol style={{ color: "#86198f", paddingLeft: "16px" }}>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>Judul Berita:</strong><br/>
-                      Gunakan teknik penulisan judul yang menarik dan mengandung kata kunci pencarian (SEO). <br/>
-                      <em>Tips Baik: "Kajian Rutin Tafsir Al-Jalalain Bersama Buya Yahya - Juli 2026"</em><br/>
-                      <em>Tips Buruk: "Kajian Hari Ini"</em>
+                      Buka menu <strong>Berita</strong>, klik <strong>+ Tulis Berita Baru</strong>, dan masukkan Judul Berita.
                     </li>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>URL Gambar Thumbnail (Penting!):</strong><br/>
-                      Ini adalah foto sampul/wajah artikel Anda yang akan tampil di halaman depan website, serta akan muncul jika berita tersebut dibagikan ke WhatsApp atau Facebook! <br/>
-                      1. Upload gambar utama ke Media Library terlebih dahulu.<br/>
-                      2. Copy URL gambar tersebut.<br/>
-                      3. Paste URL di kolom Thumbnail ini.<br/>
-                      Sebuah *preview* kotak gambar akan langsung muncul di bawah kolom jika URL Anda valid. Pastikan gambar berukuran persegi panjang (Landscape) agar tidak terpotong.
+                      <strong>URL Gambar Thumbnail:</strong> Paste (tempelkan) URL gambar dari Media Library ke kolom ini agar berita Anda memiliki gambar sampul.
+                      <img src="/guide/step/form-post-thumbnail.jpg" alt="Input Thumbnail" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>Isi Konten Berita:</strong><br/>
-                      Tulis selengkap-lengkapnya di sini menggunakan Visual Editor. 
+                      <strong>Isi Konten Berita:</strong> Tulis selengkap-lengkapnya di Visual Editor. (Pelajari ikon editor di tab "Panduan Visual Editor").
                     </li>
                     <li style={{ marginBottom: "12px" }}>
-                      <strong>Kotak Centang (Checkbox) Publikasi:</strong><br/>
-                      Jika Anda sedang menulis berita panjang dan ingin melanjutkan besok, <strong>HILANGKAN</strong> centang pada "Publikasikan Segera", lalu klik Simpan. Berita akan berstatus <strong>Draft</strong> dan tidak akan terlihat oleh publik sampai Anda mengedit dan mencentangnya kembali.
+                      <strong>Publikasi:</strong> Jangan lupa pastikan checkbox "Publikasikan Segera" dicentang sebelum menekan tombol Simpan, kecuali Anda ingin menyimpannya sebagai Draft.
+                      <img src="/guide/step/post-publish.jpg" alt="Checkbox Publikasi" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                   </ol>
                 </div>
-
-                <img src="/guide/screenshot-post-create.jpg" alt="Buat Berita" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
               </div>
             )}
 
             {activeTab === 'editor' && (
               <div className="adm-help-tab-content">
                 <h3>4. Panduan Visual Editor (Menggunakan React Quill)</h3>
-                <p>Visual Editor adalah alat Anda untuk memformat teks. Ini adalah kotak besar tempat Anda menulis isi artikel atau halaman. Berikut adalah penjelasan ikon-ikon pada toolbar bagian atas (dari kiri ke kanan):</p>
+                <p>Visual Editor adalah alat Anda untuk memformat teks. Anda TIDAK BOLEH mem-paste file gambar langsung ke kotak putih besar ini.</p>
+
+                <img src="/guide/step/editor-toolbar.jpg" alt="Toolbar Editor" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
 
                 <div style={{ background: "white", padding: "20px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
                   <ul style={{ listStyleType: "none", padding: 0 }}>
                     <li style={{ marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #f1f5f9" }}>
-                      <strong>Dropdown Header (Normal, Heading 1, 2, 3):</strong><br/>
-                      Gunakan ini untuk membuat sub-judul di dalam artikel. "Normal" untuk paragraf teks biasa. Gunakan Heading 2 untuk sub-judul besar, dan Heading 3 untuk bagian yang lebih kecil di bawahnya. <em>Sangat penting untuk SEO Google!</em>
+                      <strong>Dropdown Header:</strong> Gunakan ini untuk membuat sub-judul di dalam artikel (Heading 2 atau 3). <em>Sangat penting untuk SEO Google!</em>
                     </li>
                     <li style={{ marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #f1f5f9" }}>
-                      <strong>B (Bold), I (Italic), U (Underline), S (Strikethrough):</strong><br/>
-                      Blok teks yang ingin diberi efek penekanan (ditebalkan, dimiringkan, digarisbawahi, atau dicoret), lalu klik salah satu ikon ini.
+                      <strong>B, I, U, S:</strong> Untuk teks <strong>Bold</strong>, <em>Italic</em>, Underline, dan Strikethrough.
                     </li>
                     <li style={{ marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #f1f5f9" }}>
-                      <strong>Daftar Angka & Titik (Numbered List & Bullet List):</strong><br/>
-                      Gunakan ini untuk menjabarkan rincian agar mudah dibaca.
+                      <strong>🔗 Ikon Link (Tautan):</strong> Membuat teks bisa di-klik mengarah ke website lain.
                     </li>
                     <li style={{ marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #f1f5f9" }}>
-                      <strong>🔗 Ikon Link (Tautan):</strong><br/>
-                      Membuat kata bisa di-klik dan mengarah ke website lain. Cara pakainya: Blok kata (misal: "Klik Disini"), lalu klik ikon Link, lalu masukkan URL tujuannya (misal: "https://google.com").
-                    </li>
-                    <li style={{ marginBottom: "16px", paddingBottom: "16px", borderBottom: "1px solid #f1f5f9" }}>
-                      <strong>🖼️ Ikon Gambar (Picture):</strong><br/>
-                      Menyisipkan foto di TENGAH teks. Anda tidak boleh mengupload gambar langsung dari sini! Anda harus meng-klik ikon ini, lalu mem-paste URL gambar dari <strong>Media Library</strong> yang sudah Anda copy sebelumnya.
+                      <strong>🖼️ Ikon Gambar (Picture):</strong> Menyisipkan foto di TENGAH teks. Klik ikon ini, lalu <strong>Paste URL gambar</strong> dari Media Library.
                     </li>
                     <li>
-                      <strong>Tx (Tx Bergaris miring) / Clean Formatting:</strong><br/>
-                      Alat pembersih. Jika Anda melakukan copy-paste teks dari Microsoft Word atau website lain, kadang formatnya menjadi kacau. Blok teks yang kacau tersebut, lalu klik ikon ini untuk menghapus semua formatnya agar kembali menjadi teks murni.
+                      <strong>Tx (Clean Formatting):</strong> Alat pembersih. Blok teks yang formatnya kacau akibat copy-paste dari Word/Web lain, lalu klik ini untuk mereset formatnya.
                     </li>
                   </ul>
                 </div>
@@ -195,43 +164,24 @@ export default function AdminHelpModal({ isOpen, onClose }) {
                 <h3>5. Panduan Lengkap Media Library & Aturan Upload</h3>
                 
                 <div style={{ background: "#fffbeb", padding: "20px", borderRadius: "8px", border: "1px solid #fde68a", marginBottom: "24px", borderLeft: "6px solid #d97706" }}>
-                  <h4 style={{ marginTop: 0, color: "#92400e" }}>⚠️ ATURAN MUTLAK (DILARANG MELANGGAR) ⚠️</h4>
-                  <p style={{ color: "#92400e", marginBottom: 0, fontSize: "16px" }}>
-                    Jika Anda membuat berita/halaman, <strong>JANGAN PERNAH MENARIK FILE GAMBAR LANGSUNG DARI LAPTOP KE DALAM KOTAK TEKS VISUAL EDITOR!</strong> 
-                    <br/><br/>
-                    <strong>MENGAPA?</strong><br/>
-                    Jika Anda melakukannya, gambar tersebut akan diubah menjadi teks panjang jutaan karakter (Base64) yang akan menghancurkan database server kita! Setiap gambar <strong>WAJIB</strong> diunggah (upload) terlebih dahulu melalui menu <strong>Media Library</strong>, baru setelah itu Anda bisa mengambil Tautan/URL-nya untuk dipasang di artikel.
+                  <h4 style={{ marginTop: 0, color: "#92400e" }}>⚠️ ATURAN MUTLAK ⚠️</h4>
+                  <p style={{ color: "#92400e", marginBottom: 0 }}>
+                    Setiap gambar <strong>WAJIB</strong> diunggah melalui menu Media Library agar tersimpan di server Cloudinary. Dilarang keras paste gambar langsung ke dalam artikel teks karena akan menghancurkan performa web.
                   </p>
                 </div>
-
-                <img src="/guide/screenshot-media.jpg" alt="Media Library" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                 
                 <div style={{ background: "#f0fdfa", padding: "20px", borderRadius: "8px", border: "1px solid #99f6e4" }}>
-                  <h4 style={{ marginTop: 0, color: "#0f766e" }}>Tutorial Step-by-Step Cara Mengunggah dan Menggunakan Gambar Secara Benar:</h4>
                   <ol style={{ color: "#115e59", paddingLeft: "16px" }}>
                     <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Siapkan gambar Anda di laptop. Pastikan formatnya JPG, PNG, atau WebP. Dan usahakan ukurannya tidak melebihi 2 Megabyte agar website tetap ringan.
+                      Masuk ke menu <strong>Media Library</strong>, klik area unggah kotak putus-putus atau tarik file Anda (maks. 5MB) ke area tersebut. Tunggu hingga selesai 100%.
+                      <img src="/guide/step/media-upload.jpg" alt="Area Upload" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                     <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Masuk ke menu <strong>Media Library</strong> di sisi kiri.
+                      Gambar Anda akan muncul di Galeri Media. <strong>Klik tombol "Copy URL"</strong> di bawah gambar tersebut untuk menyalin Tautan internet gambar Anda.
+                      <img src="/guide/step/media-card.jpg" alt="Tombol Copy URL" className="adm-guide-img" style={{ maxWidth: '300px' }} onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
                     <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Klik area putih putus-putus bertuliskan "Klik atau tarik file gambar ke sini", lalu pilih foto Anda.
-                    </li>
-                    <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Perhatikan progress bar. Gambar sedang dikirim ke <strong>Cloudinary</strong> (Server khusus optimasi gambar tingkat dunia). Jangan tutup halaman hingga proses sukses 100%.
-                    </li>
-                    <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Setelah sukses, gambar Anda akan muncul di bagian "Galeri Media" di bawahnya.
-                    </li>
-                    <li style={{ marginBottom: "12px", fontSize: "16px", background: "#ccfbf1", padding: "8px", borderRadius: "4px" }}>
-                      <strong>Langkah Terpenting:</strong> Di bawah setiap gambar di galeri tersebut, terdapat deretan teks URL dan tombol <strong>"Copy URL"</strong>. Klik tombol "Copy URL" tersebut. Ini berarti Anda sudah menyalin alamat internet dari gambar tersebut.
-                    </li>
-                    <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Sekarang pergilah ke tempat Anda ingin meletakkan gambar tersebut (misal: ke halaman Buat Berita).
-                    </li>
-                    <li style={{ marginBottom: "12px", fontSize: "16px" }}>
-                      Pilih apakah Anda ingin gambar itu menjadi sampul (Paste di <strong>kolom Thumbnail</strong>) ATAU menjadi gambar di tengah teks (Klik <strong>Ikon Picture</strong> di Visual Editor, lalu Paste URL di kotak yang muncul).
+                      Pergi ke halaman pembuatan Berita/Halaman, lalu paste URL tersebut ke kolom yang sesuai (Kolom Thumbnail, Kolom Hero, atau prompt Ikon Picture di Visual Editor).
                     </li>
                   </ol>
                 </div>
@@ -241,32 +191,20 @@ export default function AdminHelpModal({ isOpen, onClose }) {
             {activeTab === 'users' && (
               <div className="adm-help-tab-content">
                 <h3>6. Manajemen Admin & Setting (Khusus Super Admin)</h3>
-                <p>Bagian ini memberikan panduan kepada pemegang kunci utama (Super Admin) untuk memodifikasi pengaturan fundamental situs.</p>
                 
                 <div style={{ background: "#faf5ff", padding: "20px", borderRadius: "8px", border: "1px solid #e9d5ff", marginBottom: "20px" }}>
-                  <h4 style={{ marginTop: 0, color: "#6b21a8" }}>Cara Mengganti Pengaturan Global (Settings)</h4>
-                  <ul style={{ color: "#7e22ce" }}>
-                    <li style={{ marginBottom: "12px" }}><strong>Nama Website:</strong> Akan muncul di tab browser pengunjung.</li>
-                    <li style={{ marginBottom: "12px" }}><strong>Deskripsi Website:</strong> Sangat penting untuk Google Search. Tulis satu paragraf pendek (maksimal 160 karakter) yang menjelaskan siapa/apa institusi ini. Google akan membaca ini.</li>
-                    <li style={{ marginBottom: "12px" }}><strong>URL Logo:</strong> Jika Anda ingin mengganti logo situs, upload logo format PNG Transparan (tanpa background) ke Media Library, lalu paste (tempel) URL-nya di sini! Jangan asal tulis teks.</li>
-                    <li style={{ marginBottom: "12px" }}><strong>Teks Footer:</strong> Tulisan hak cipta paling bawah (contoh: "Copyright © 2026 Albahjah. Hak Cipta Dilindungi.").</li>
-                  </ul>
+                  <h4 style={{ marginTop: 0, color: "#6b21a8" }}>Cara Mengganti Pengaturan Global</h4>
+                  <img src="/guide/screenshot-settings.jpg" alt="Settings" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
+                  <p style={{ color: "#7e22ce" }}>Di menu ini Anda bisa merubah identitas web (Nama, SEO Deskripsi, WhatsApp, Teks Footer). Untuk Logo, ingat untuk mengupload gambar logonya ke Media Library dulu, baru paste URL-nya ke kolom Logo URL di sini.</p>
                 </div>
 
                 <div style={{ background: "#fdf4ff", padding: "20px", borderRadius: "8px", border: "1px solid #f5d0fe" }}>
                   <h4 style={{ marginTop: 0, color: "#86198f" }}>Manajemen Akun Admin (Users)</h4>
-                  <p style={{ color: "#a21caf" }}>
-                    Menjaga keamanan situs dimulai dari mengontrol siapa yang memiliki akses login.
-                  </p>
+                  <img src="/guide/screenshot-users.jpg" alt="Users" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                   <ul style={{ color: "#86198f" }}>
-                    <li style={{ marginBottom: "12px" }}><strong>Mendaftarkan Staff Baru:</strong> Masukkan Nama Lengkap asli (agar mudah dikenali), Alamat Email yang valid, dan Password yang kuat (minimal kombinasi huruf dan angka).</li>
-                    <li style={{ marginBottom: "12px" }}><strong>Pemilihan Peran (Role):</strong>
-                      <ul style={{ marginTop: "8px", background: "white", padding: "12px 12px 12px 24px", borderRadius: "6px" }}>
-                        <li><strong>ADMIN BIASA:</strong> Berikan peran ini kepada staff operasional, divisi redaksi, atau jurnalis internal. Mereka hanya bisa menulis berita, mengatur halaman, dan upload foto. Mereka TIDAK AKAN bisa melihat tombol Pengaturan Website dan Manajemen Admin!</li>
-                        <li><strong>SUPER ADMIN:</strong> Berikan hanya kepada pimpinan IT atau Ketua Yayasan. Punya kendali tak terbatas.</li>
-                      </ul>
-                    </li>
-                    <li style={{ marginBottom: "12px" }}><strong>Cabut Akses:</strong> Jika ada staff yang dimutasi/berhenti, segera hapus akun mereka demi keamanan! Cukup tekan tombol ikon Tong Sampah Merah di tabel daftar user sebelah kanannya. Ingat, Super Admin tidak akan pernah bisa tidak sengaja menghapus akun dirinya sendiri.</li>
+                    <li style={{ marginBottom: "12px" }}><strong>ADMIN:</strong> Hanya bisa menulis berita, mengatur halaman, dan upload media.</li>
+                    <li style={{ marginBottom: "12px" }}><strong>SUPER ADMIN:</strong> Punya kendali tak terbatas.</li>
+                    <li style={{ marginBottom: "12px" }}>Klik ikon <strong>Tong Sampah Merah</strong> untuk mencabut/menghapus akses admin yang sudah tidak bekerja.</li>
                   </ul>
                 </div>
               </div>
@@ -275,30 +213,80 @@ export default function AdminHelpModal({ isOpen, onClose }) {
             {activeTab === 'faq' && (
               <div className="adm-help-tab-content">
                 <h3>7. Tanya Jawab Cepat (FAQ & Troubleshooting)</h3>
+                <div style={{ marginBottom: "20px" }}>
+                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Halaman sudah saya ubah dan simpan, kenapa belum berubah di web publik?</h4>
+                  <p>A: Browser sering menyimpan <em>cache</em> (memori sementara). Tekan <strong>CTRL + SHIFT + R</strong> (Windows) atau <strong>CMD + SHIFT + R</strong> (Mac) untuk menyegarkan tampilan (hard refresh).</p>
+                </div>
+                <div style={{ marginBottom: "20px" }}>
+                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Loading upload gambar mutar terus?</h4>
+                  <p>A: Pastikan file tidak lebih dari 5MB, formatnya valid (JPG/PNG), dan cek koneksi internet Anda.</p>
+                </div>
+                <div style={{ marginBottom: "20px" }}>
+                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Saya salah ketik/hapus teks panjang, bisa dikembalikan?</h4>
+                  <p>A: Selama Anda BELUM mengklik Simpan, tekan <strong>CTRL + Z</strong> (Undo) di keyboard untuk membatalkan kesalahan tersebut.</p>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'tutorial_page' && (
+              <div className="adm-help-tab-content">
+                <h3>8. Tutorial Praktik: Membuat Halaman "Sejarah Yayasan" Sampai Jadi!</h3>
+                <p style={{ fontSize: "16px" }}>Mari kita praktikkan semua teori sebelumnya dalam <strong>satu studi kasus nyata</strong>. Kita akan membuat halaman "Sejarah Yayasan" yang memiliki banner atas (Hero Image), format judul yang rapi, dan sebuah foto pendiri di tengah teks. Ikuti langkah demi langkah di bawah ini:</p>
                 
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Saya mengubah halaman, kenapa belum berubah saat dilihat di publik?</h4>
-                  <p>A: Pastikan Anda telah mengklik tombol "Simpan Perubahan" di paling bawah. Kadang-kadang browser menyimpan <em>cache</em>. Cobalah segarkan (refresh) halaman website publik Anda atau tekan kombinasi keyboard <strong>CTRL + SHIFT + R</strong> (Windows) atau <strong>CMD + SHIFT + R</strong> (Mac) untuk memaksa pemuatan ulang penuh dari server.</p>
-                </div>
+                <div style={{ background: "#f0fdfa", padding: "24px", borderRadius: "8px", border: "1px solid #5eead4", marginTop: "24px" }}>
+                  
+                  <h4 style={{ color: "#0f766e", marginTop: 0, fontSize: "18px" }}>Langkah 1: Siapkan Gambar Anda di Media Library</h4>
+                  <p>Sebelum menyentuh menu Halaman, kita <strong>WAJIB</strong> mengupload gambar-gambar yang akan dipakai. Kita butuh 2 gambar: 1 untuk Banner Atas (ukuran memanjang/landscape), dan 1 untuk foto pendiri (bebas).</p>
+                  <img src="/guide/step/media-upload.jpg" alt="Upload Media" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Masuk menu <strong>Media Library</strong>, klik area putus-putus, dan upload kedua foto Anda.</li>
+                    <li>Setelah terupload, klik tombol <strong>Copy URL</strong> di bawah gambar Banner. (<em>Ingat, sekarang URL banner sudah ada di dalam "clipboard" memori laptop Anda</em>).</li>
+                  </ul>
+                  <img src="/guide/step/media-card.jpg" alt="Copy URL Media" className="adm-guide-img" style={{ maxWidth: '300px' }} onError={(e) => { e.target.style.display = 'none'; }} />
 
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Saya mencoba upload gambar, tapi loadingnya mutar terus. Mengapa?</h4>
-                  <p>A: Cek koneksi internet Anda. Kedua, pastikan ukuran file gambar Anda tidak terlalu besar (tidak boleh lebih dari 5MB). Ketiga, pastikan tipe file adalah JPG atau PNG yang valid (bukan file PDF atau Word yang diubah namanya ekstensi nya).</p>
-                </div>
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 2: Mulai Buat Halaman Baru</h4>
+                  <p>Masuk ke menu <strong>Halaman (Pages)</strong> di kiri, lalu klik tombol biru <strong>+ Buat Halaman Baru</strong> di kanan atas.</p>
+                  <img src="/guide/step/btn-create-page.jpg" alt="Klik Buat Halaman" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Pada kolom <strong>Judul Halaman</strong>, ketik: <code>Sejarah Yayasan Albahjah</code></li>
+                    <li>Biarkan kolom Slug otomatis terisi (akan menjadi <code>sejarah-yayasan-albahjah</code>).</li>
+                    <li>Pada kolom <strong>Sub-judul</strong>, ketik: <code>Mengenal lebih dekat rekam jejak perjuangan dakwah.</code></li>
+                  </ul>
+                  <img src="/guide/step/form-page-top.jpg" alt="Isi Form Judul" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
 
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Saya tidak sengaja menghapus teks di Visual Editor, bisa dikembalikan?</h4>
-                  <p>A: Selama Anda BELUM menekan tombol Simpan Perubahan, Anda cukup menekan tombol keyboard <strong>CTRL + Z</strong> (Undo) untuk membatalkan kesalahan ketik/hapus tersebut.</p>
-                </div>
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 3: Atur Layout & Masukkan Gambar Banner</h4>
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Karena kita ingin tampilan mewah dengan gambar besar di atas, ubah <strong>Pilih Layout</strong> menjadi <code>Hero Image</code>.</li>
+                    <li>Tiba-tiba, akan muncul kolom baru bernama <strong>URL Gambar Hero</strong>.</li>
+                    <li>Klik kanan di dalam kolom tersebut, lalu pilih <strong>Paste</strong> (atau tekan CTRL+V). URL banner yang Anda copy dari Media Library di Langkah 1 akan masuk ke sini!</li>
+                  </ul>
+                  <img src="/guide/step/form-page-layout.jpg" alt="Pilih Layout" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
 
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Tulisan di web publik terlihat kacau formatnya (besar kecil, warna aneh). Kenapa?</h4>
-                  <p>A: Ini terjadi jika Anda melakukan copy-paste langsung teks dari sumber lain (seperti Ms. Word atau Website berita lain). Sumber asal membawa "kode tersembunyi". Cara mengatasinya: Edit artikel, blok teks yang kacau, lalu tekan ikon penghapus berlabel <strong>Tx (Clean Formatting)</strong> di toolbar Visual Editor, lalu simpan ulang.</p>
-                </div>
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 4: Menulis Konten di Visual Editor</h4>
+                  <p>Sekarang gulir (scroll) ke bawah menuju kotak putih besar (Visual Editor). Mari mulai menulis.</p>
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Ketik: <code>Awal Mula Berdirinya Yayasan</code>. Blok teks ini, lalu klik tombol panah <strong>Normal</strong> di Toolbar atas, ubah menjadi <strong>Heading 2</strong>. Teks akan membesar. Ini bagus untuk SEO.</li>
+                    <li>Tekan <em>Enter</em>. Mulailah mengetik paragraf pertama cerita Anda: <code>Yayasan Albahjah didirikan pada tahun...</code>.</li>
+                  </ul>
+                  <img src="/guide/step/editor-toolbar.jpg" alt="Toolbar Editor" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
 
-                <div style={{ marginBottom: "20px" }}>
-                  <h4 style={{ color: "#0f172a", borderBottom: "2px solid #e2e8f0", paddingBottom: "8px" }}>Q: Saya admin biasa, kenapa saya tidak bisa mengganti Logo web?</h4>
-                  <p>A: Demi keamanan struktur web, perubahan global hanya diperbolehkan untuk akun berstatus SUPER ADMIN. Hubungi tim IT atau pimpinan Anda yang memiliki akses Super Admin untuk melakukan penggantian logo.</p>
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 5: Menyelipkan Foto Pendiri di Tengah Cerita</h4>
+                  <p>Kita ingin menaruh foto pendiri di bawah paragraf pertama.</p>
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li><strong>Buka tab baru di browser Anda</strong> (biarkan halaman ketikan ini tetap terbuka). Di tab baru itu, masuk ke panel admin Albahjah lagi, lalu ke <strong>Media Library</strong>.</li>
+                    <li>Cari foto pendiri yang sudah di-upload di Langkah 1. Klik tombol <strong>Copy URL</strong> di bawah foto tersebut.</li>
+                    <li>Kembali ke tab halaman ketikan Anda. Taruh kursor di baris baru setelah paragraf pertama.</li>
+                    <li>Klik ikon <strong>Gambar (Picture)</strong> di toolbar atas editor. Akan muncul kotak meminta URL.</li>
+                    <li><strong>Paste</strong> URL foto pendiri tersebut ke dalam kotak, lalu klik <strong>Simpan/Insert</strong>. Foto akan langsung muncul di dalam editor Anda!</li>
+                  </ul>
+
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 6: Simpan & Sukses!</h4>
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Cek kembali semua ketikan Anda.</li>
+                    <li>Gulir paling bawah, lalu klik tombol biru besar <strong>Simpan Halaman</strong>.</li>
+                    <li><strong>SELESAI! TARRRAAA! 🎉</strong> Halaman Anda telah berhasil dibuat. Anda akan dikembalikan ke tabel daftar halaman, dan Anda bisa mengeklik tombol <strong>Lihat Web</strong> (ikon mata) di tabel tersebut untuk melihat hasil karya Anda yang sudah live di internet.</li>
+                  </ul>
+
                 </div>
               </div>
             )}
