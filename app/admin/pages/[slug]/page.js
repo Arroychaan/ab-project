@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { use } from "react";
 import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
+import LivePreviewModal from "@/app/components/admin/LivePreviewModal";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -17,6 +18,7 @@ export default function EditPageBuilder({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isDevMode, setIsDevMode] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   // Form states
   const [title, setTitle] = useState("");
@@ -186,6 +188,10 @@ export default function EditPageBuilder({ params }) {
         )}
 
         <div style={{ marginTop: "48px", display: "flex", justifyContent: "flex-end", gap: "16px" }}>
+          <button type="button" onClick={() => setIsPreviewOpen(true)} className="adm-btn" style={{ backgroundColor: "#10b981", color: "white", padding: "10px 24px", borderRadius: "8px", border: "none", cursor: "pointer", fontWeight: "600", display: "flex", alignItems: "center", gap: "8px", transition: "0.2s" }} onMouseOver={(e) => e.target.style.backgroundColor = "#059669"} onMouseOut={(e) => e.target.style.backgroundColor = "#10b981"}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Preview Halaman
+          </button>
           <button type="button" onClick={() => router.push("/admin/pages")} className="adm-btn adm-btn-secondary">
             Batal
           </button>
@@ -194,6 +200,12 @@ export default function EditPageBuilder({ params }) {
           </button>
         </div>
       </form>
+
+      <LivePreviewModal 
+        isOpen={isPreviewOpen} 
+        onClose={() => setIsPreviewOpen(false)} 
+        page={{ title, subtitle, layout, content, heroImage, customCss, customHtml }}
+      />
     </>
   );
 }
