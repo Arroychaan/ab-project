@@ -90,6 +90,10 @@ export default function AdminHelpModal({ isOpen, onClose }) {
                       <strong>Pilih Layout Desain:</strong> "Standard" untuk tampilan minimalis hijau, atau "Hero Image" jika Anda ingin ada gambar besar di paling atas.
                       <img src="/guide/step/form-page-layout.jpg" alt="Dropdown Layout" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
                     </li>
+                    <li style={{ marginBottom: "12px" }}>
+                      <strong>Preview Halaman:</strong> Sebelum menyimpan, klik tombol <strong>👁️ Preview Halaman</strong> di bawah untuk mensimulasikan hasil akhir yang akan dilihat oleh pengunjung (bisa dilihat versi Desktop maupun Mobile).
+                      <img src="/guide/step/preview-modal-mobile.jpg" alt="Live Preview Halaman" className="adm-guide-img" style={{ maxWidth: '400px' }} onError={(e) => { e.target.style.display = 'none'; }} />
+                    </li>
                   </ol>
                 </div>
 
@@ -280,10 +284,15 @@ export default function AdminHelpModal({ isOpen, onClose }) {
                     <li><strong>Paste</strong> URL foto pendiri tersebut ke dalam kotak, lalu klik <strong>Simpan/Insert</strong>. Foto akan langsung muncul di dalam editor Anda!</li>
                   </ul>
 
-                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 6: Simpan & Sukses!</h4>
+                  <h4 style={{ color: "#0f766e", marginTop: "32px", fontSize: "18px" }}>Langkah 6: Cek Preview & Simpan Sukses!</h4>
                   <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
-                    <li>Cek kembali semua ketikan Anda.</li>
-                    <li>Gulir paling bawah, lalu klik tombol biru besar <strong>Simpan Halaman</strong>.</li>
+                    <li>Gulir ke bawah, klik tombol <strong>👁️ Preview Halaman</strong>.</li>
+                    <li>Pastikan tampilan di mode "Desktop" maupun "Mobile View" sudah terlihat bagus dan pas.</li>
+                  </ul>
+                  <img src="/guide/step/btn-preview-page.jpg" alt="Tombol Preview" className="adm-guide-img" style={{ maxWidth: '300px' }} onError={(e) => { e.target.style.display = 'none'; }} />
+                  <img src="/guide/step/preview-modal.jpg" alt="Tampilan Preview Modal" className="adm-guide-img" onError={(e) => { e.target.style.display = 'none'; }} />
+                  <ul style={{ color: "#115e59", paddingLeft: "20px" }}>
+                    <li>Jika sudah yakin, tutup modal preview, lalu klik tombol biru besar <strong>Simpan Halaman</strong> (atau Simpan Perubahan).</li>
                     <li><strong>SELESAI! TARRRAAA! 🎉</strong> Halaman Anda telah berhasil dibuat. Anda akan dikembalikan ke tabel daftar halaman, dan Anda bisa mengeklik tombol <strong>Lihat Web</strong> (ikon mata) di tabel tersebut untuk melihat hasil karya Anda yang sudah live di internet.</li>
                   </ul>
 

@@ -46,6 +46,39 @@ if (!fs.existsSync('public/guide/step')) {
     const layoutSelect = await page.$('.adm-card > div:nth-child(3)');
     if (layoutSelect) await layoutSelect.screenshot({ path: 'public/guide/step/form-page-layout.jpg', type: 'jpeg', quality: 80 });
 
+    // Screenshot Tombol Preview Halaman
+    const previewBtn = await page.evaluateHandle(() => {
+      const buttons = Array.from(document.querySelectorAll('button'));
+      return buttons.find(b => b.innerText.includes('Preview Halaman'));
+    });
+    if (previewBtn) await previewBtn.asElement().screenshot({ path: 'public/guide/step/btn-preview-page.jpg', type: 'jpeg', quality: 80 });
+
+    // Klik Tombol Preview Halaman
+    if (previewBtn) {
+      await previewBtn.asElement().click();
+      await new Promise(r => setTimeout(r, 1000));
+      // Capture Preview Modal Container
+      const previewModal = await page.evaluateHandle(() => {
+        return Array.from(document.querySelectorAll('div')).find(div => div.innerText && div.innerText.includes('Live Preview') && div.innerText.includes('Mobile View'));
+      });
+      if (previewModal) await previewModal.asElement().screenshot({ path: 'public/guide/step/preview-modal.jpg', type: 'jpeg', quality: 80 });
+      // Klik Mobile Toggle
+      const mobileBtn = await page.evaluateHandle(() => {
+        const buttons = Array.from(document.querySelectorAll('button'));
+        return buttons.find(b => b.innerText.includes('Mobile View'));
+      });
+      if (mobileBtn) await mobileBtn.asElement().click();
+      await new Promise(r => setTimeout(r, 1000));
+      if (previewModal) await previewModal.asElement().screenshot({ path: 'public/guide/step/preview-modal-mobile.jpg', type: 'jpeg', quality: 80 });
+      // Close Modal
+      const closeBtn = await page.evaluateHandle(() => {
+        const buttons = Array.from(document.querySelectorAll('button'));
+        return buttons.find(b => b.innerText === '×');
+      });
+      if (closeBtn) await closeBtn.asElement().click();
+      await new Promise(r => setTimeout(r, 500));
+    }
+
     // Screenshot Developer Mode Toggle (ada di adm-section-header)
     const devToggle = await page.$('.adm-section-header > div:nth-child(2)');
     if (devToggle) await devToggle.screenshot({ path: 'public/guide/step/dev-toggle.jpg', type: 'jpeg', quality: 80 });
