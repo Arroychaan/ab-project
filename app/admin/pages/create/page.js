@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import dynamic from "next/dynamic";
-import AIAssistant from "@/app/components/admin/AIAssistant";
 import "react-quill-new/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
@@ -139,15 +138,6 @@ export default function CreatePageBuilder() {
         )}
 
         <hr style={{ border: 0, borderTop: "1px dashed #cbd5e1", margin: "32px 0" }} />
-
-        <AIAssistant 
-          isDevMode={isDevMode} 
-          currentContent={isDevMode ? customHtml : content}
-          onApplyText={(text) => {
-            if (isDevMode) setCustomHtml(text);
-            else setContent(text);
-          }}
-        />
 
         {isDevMode ? (
           <div style={{ backgroundColor: "#0f172a", padding: "24px", borderRadius: "12px", color: "white" }}>

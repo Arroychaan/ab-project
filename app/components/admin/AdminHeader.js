@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { signOut } from "next-auth/react";
+import AdminHelpModal from "./AdminHelpModal";
 
 export default function AdminHeader({ user, title, subtitle, onToggleSidebar }) {
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
+
   const initials = user?.name
     ? user.name
         .split(" ")
@@ -33,6 +37,19 @@ export default function AdminHeader({ user, title, subtitle, onToggleSidebar }) 
       </div>
 
       <div className="adm-header-right">
+        <button 
+          className="adm-help-trigger-btn" 
+          onClick={() => setIsHelpOpen(true)}
+          title="Bantuan & Panduan"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span style={{ marginLeft: "8px", fontWeight: "600", fontSize: "14px" }}>Bantuan</span>
+        </button>
+
         <div className="adm-user-info">
           <div className="adm-user-avatar">{initials}</div>
           <div>
@@ -48,6 +65,8 @@ export default function AdminHeader({ user, title, subtitle, onToggleSidebar }) 
           Logout
         </button>
       </div>
+
+      <AdminHelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} />
     </header>
   );
 }
