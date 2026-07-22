@@ -1896,3 +1896,68 @@ a {
   height: auto;
 }
 
+
+/* Premium Typography for Dynamic Content */
+.dynamic-content-wrapper {
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.dynamic-content-wrapper h1,
+.dynamic-content-wrapper h2,
+.dynamic-content-wrapper h3,
+.dynamic-content-wrapper h4 {
+  color: #111827;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+}
+.dynamic-content-wrapper h1 { font-size: 2.25rem; }
+.dynamic-content-wrapper h2 { font-size: 1.875rem; }
+.dynamic-content-wrapper h3 { font-size: 1.5rem; }
+.dynamic-content-wrapper h4 { font-size: 1.25rem; }
+.dynamic-content-wrapper p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+.dynamic-content-wrapper a {
+  color: #0d6e3f;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.dynamic-content-wrapper a:hover {
+  color: #0a5a33;
+}
+.dynamic-content-wrapper strong {
+  font-weight: 600;
+  color: #111827;
+}
+.dynamic-content-wrapper ul,
+.dynamic-content-wrapper ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+.dynamic-content-wrapper li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.dynamic-content-wrapper blockquote {
+  font-weight: 500;
+  font-style: italic;
+  color: #111827;
+  border-left: 4px solid #0d6e3f;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  background-color: #f4faf7;
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.dynamic-content-wrapper img {
+  border-radius: 0.75rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
