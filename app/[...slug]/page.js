@@ -31,9 +31,9 @@ export default async function DynamicPage({ params }) {
         </div>
         <div className="container" style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto' }}>
           {page.customHtml ? (
-            <div dangerouslySetInnerHTML={{ __html: page.customHtml }} />
+            <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: page.customHtml }} />
           ) : (
-            <div dangerouslySetInnerHTML={{ __html: data.content }} />
+            <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: data.content }} />
           )}
         </div>
       </div>
@@ -45,9 +45,9 @@ export default async function DynamicPage({ params }) {
       <div className="dynamic-page blank-layout">
         {page.customCss && <style>{page.customCss}</style>}
         {page.customHtml ? (
-          <div dangerouslySetInnerHTML={{ __html: page.customHtml }} />
+          <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: page.customHtml }} />
         ) : (
-          <div dangerouslySetInnerHTML={{ __html: data.content }} />
+          <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: data.content }} />
         )}
       </div>
     );
@@ -66,9 +66,9 @@ export default async function DynamicPage({ params }) {
 
       <div style={{ padding: "40px 20px", maxWidth: "800px", margin: "-40px auto 40px", backgroundColor: "white", borderRadius: "12px", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}>
         {page.customHtml ? (
-          <div dangerouslySetInnerHTML={{ __html: page.customHtml }} />
+          <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: page.customHtml }} />
         ) : (
-          <div dangerouslySetInnerHTML={{ __html: data.content || "Konten belum ditambahkan." }} />
+          <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: data.content || "Konten belum ditambahkan." }} />
         )}
       </div>
     </div>

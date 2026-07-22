@@ -1877,3 +1877,22 @@ a {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
 }
+/* Dynamic Content Wrapper fixes */
+.dynamic-content-wrapper {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.dynamic-content-wrapper p,
+.dynamic-content-wrapper span,
+.dynamic-content-wrapper pre {
+  white-space: pre-wrap !important;
+  max-width: 100%;
+}
+.dynamic-content-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
