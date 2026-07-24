@@ -1,0 +1,137 @@
+.marquee-section {
+  padding: 60px 20px;
+  background-color: #f8fafc;
+  overflow: hidden;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.marquee-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.marquee-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #059669; /* Emerald 600 */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.marquee-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.marquee-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  /* Fading edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: scroll-marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Individual logo card styling to look premium without real images */
+.marquee-logo-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.marquee-logo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.marquee-real-logo {
+  max-height: 50px;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+.marquee-fallback-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marquee-logo-icon {
+  font-size: 24px;
+  background-color: #ecfdf5;
+  color: #059669;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.marquee-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Since we duplicated the array, we translate by exactly 50% of the track width to loop seamlessly */
+    transform: translateX(calc(-50% - 16px)); /* 16px to account for half of the gap */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-section {
+    padding: 40px 16px;
+  }
+  
+  .marquee-title {
+    font-size: 24px;
+  }
+  
+  .marquee-logo-card {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  
+  .marquee-logo-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .marquee-logo-text {
+    font-size: 16px;
+  }
+}

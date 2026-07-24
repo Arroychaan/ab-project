@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import UniversityMarquee from "./components/public/UniversityMarquee";
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -219,6 +220,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ============ UNIVERSITY MARQUEE SECTION ============ */}
+      <UniversityMarquee />
+      
     </div>
   );
 }
