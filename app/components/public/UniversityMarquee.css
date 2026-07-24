@@ -1,178 +1,144 @@
+/* ===========================
+   UNIVERSITY INFINITE MARQUEE
+   =========================== */
 .uni-marquee-section {
-  padding: 80px 20px;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+  padding: 60px 0 70px 0;
+  background: #ffffff;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .uni-marquee-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 50px auto;
+  margin-bottom: 40px;
+  padding: 0 20px;
 }
 
 .uni-marquee-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #059669;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  padding: 6px 16px;
-  border-radius: 30px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #0d6e3f;
+  background: #edf7f2;
+  border: 1px solid #ccebdc;
+  padding: 6px 18px;
+  border-radius: 50px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+}
+
+.uni-badge-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #0d6e3f;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .uni-marquee-title {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 12px 0;
+  color: #1e293b;
+  margin: 0;
   letter-spacing: -0.5px;
 }
 
-.uni-marquee-desc {
-  font-size: 15px;
-  color: #64748b;
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* Marquee track and wrapper */
-.uni-marquee-wrapper {
+/* Marquee Container with edge fading */
+.uni-marquee-container {
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
 .uni-marquee-track {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 50px;
   width: max-content;
-  animation: uni-scroll 35s linear infinite;
-  padding: 15px 0;
+  animation: uni-marquee-scroll 32s linear infinite;
+  padding: 10px 0;
 }
 
 .uni-marquee-track:hover {
   animation-play-state: paused;
 }
 
-/* Logo Card styling */
-.uni-logo-card {
+/* Individual Logo Item styling */
+.uni-logo-item {
   flex-shrink: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 120px;
-  padding: 16px 20px;
+  height: 80px;
+  padding: 10px 24px;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
   cursor: pointer;
-  position: relative;
 }
 
-.uni-logo-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 14px 28px -4px rgba(15, 23, 42, 0.12);
-  border-color: #10b981;
+.uni-logo-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(13, 110, 63, 0.12);
+  border-color: #a7f3d0;
 }
 
-.uni-logo-img-wrapper {
-  width: 100%;
-  height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.uni-logo-img {
-  max-width: 100%;
-  max-height: 100%;
+.uni-logo-image {
+  height: 55px;
+  width: auto;
+  max-width: 160px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
-  transition: transform 0.3s ease;
+  filter: grayscale(15%) opacity(0.9);
+  transition: all 0.3s ease;
 }
 
-.uni-logo-card:hover .uni-logo-img {
-  transform: scale(1.08);
+.uni-logo-item:hover .uni-logo-image {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.06);
 }
 
-.uni-logo-info {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.uni-logo-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: #334155;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 150px;
-  display: block;
-}
-
-.uni-logo-card:hover .uni-logo-name {
-  color: #059669;
-}
-
-@keyframes uni-scroll {
+/* Animation keyframes */
+@keyframes uni-marquee-scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    /* Translate 1/3 of total track width because we repeated 3 times */
-    transform: translateX(calc(-33.3333% - 9.33px));
+    transform: translateX(calc(-33.3333% - 16.66px));
   }
 }
 
-/* Responsive adjustments */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .uni-marquee-section {
-    padding: 50px 16px;
+    padding: 40px 0 50px 0;
   }
 
   .uni-marquee-title {
-    font-size: 24px;
-  }
-
-  .uni-marquee-desc {
-    font-size: 14px;
-  }
-
-  .uni-logo-card {
-    width: 140px;
-    height: 100px;
-    padding: 12px 14px;
-    border-radius: 14px;
-  }
-
-  .uni-logo-img-wrapper {
-    height: 50px;
-  }
-
-  .uni-logo-name {
-    font-size: 11px;
-    max-width: 120px;
+    font-size: 22px;
   }
 
   .uni-marquee-track {
-    gap: 18px;
-    animation-duration: 25s;
+    gap: 30px;
+    animation-duration: 22s;
+  }
+
+  .uni-logo-item {
+    height: 65px;
+    padding: 8px 16px;
+    border-radius: 12px;
+  }
+
+  .uni-logo-image {
+    height: 42px;
+    max-width: 120px;
   }
 }

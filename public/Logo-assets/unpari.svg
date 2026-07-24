@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <circle cx="150" cy="150" r="140" fill="#00529b" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="150" cy="150" r="125" fill="#f8fafc" stroke="#f59e0b" stroke-width="6"/>
+  <polygon points="150,35 180,95 245,100 195,145 210,210 150,175 90,210 105,145 55,100 120,95" fill="#f59e0b"/>
+  <circle cx="150" cy="135" r="55" fill="#dc2626"/>
+  <!-- Torch / Obor PGRI -->
+  <path d="M140,165 L160,165 L155,200 L145,200 Z" fill="#78350f"/>
+  <path d="M135,140 Q150,105 165,140 Q150,120 135,140 Z" fill="#facc15"/>
+  <text x="150" y="245" font-family="'Poppins', sans-serif" font-size="22" font-weight="900" fill="#00529b" text-anchor="middle">UNPARI</text>
+  <text x="150" y="265" font-family="'Poppins', sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">SILAMPARI</text>
+</svg>

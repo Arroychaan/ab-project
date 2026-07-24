@@ -15,12 +15,9 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 1 PAGE FIT - NO SCROLL ON DESKTOP */
-@media (min-width: 1024px) {
-  html, body {
-    height: 100vh;
-    overflow: hidden;
-  }
+html, body {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a {
@@ -34,11 +31,8 @@ a {
   width: 100%;
 }
 
-@media (min-width: 1024px) {
-  .app-container {
-    height: 100vh;
-    overflow: hidden;
-  }
+.app-container {
+  min-height: 100vh;
 }
 
 /* ===========================
@@ -408,13 +402,8 @@ a {
   padding: 20px 60px;
 }
 
-@media (min-width: 1024px) {
-  .hero {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    align-items: stretch;
-  }
+.hero {
+  padding: 40px 60px;
 }
 
 /* Unified Hero Container: combines text and video inside a single card */
@@ -431,10 +420,8 @@ a {
   overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-  .hero-container {
-    height: 100%;
-  }
+.hero-container {
+  min-height: 480px;
 }
 
 /* Background Pattern overlay on Hero */
