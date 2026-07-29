@@ -83,8 +83,8 @@ export default function EditPageBuilder({ params }) {
           subtitle,
           layout,
           data: JSON.stringify(dataObj),
-          customCss: isDevMode ? customCss : null,
-          customHtml: isDevMode ? customHtml : null,
+          customCss: customCss || null,
+          customHtml: customHtml || null,
         }),
       });
 
