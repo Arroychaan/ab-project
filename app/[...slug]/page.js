@@ -50,7 +50,9 @@ export default async function DynamicPage({ params }) {
     }
   }
 
-  const contentHtml = page.customHtml || data.content || "";
+  const rawHtml = page.customHtml || data.content || "";
+  // Clean non-breaking spaces to avoid artificial word gaps in justified text
+  const contentHtml = rawHtml.replace(/&nbsp;/g, " ");
 
   // Render berdasarkan Layout yang dipilih oleh Admin
   if (page.layout === "HERO_IMAGE") {
@@ -68,7 +70,7 @@ export default async function DynamicPage({ params }) {
           </div>
         </div>
 
-        <div className="container" style={{ padding: "60px 20px 100px", maxWidth: "1080px", margin: "0 auto" }}>
+        <div className="container" style={{ padding: "60px 20px 100px", maxWidth: "1140px", margin: "0 auto" }}>
           <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
       </div>
@@ -92,14 +94,14 @@ export default async function DynamicPage({ params }) {
       {/* Premium Header */}
       <div style={{ background: "linear-gradient(135deg, #0d6e3f 0%, #0a5a33 100%)", color: "white", padding: "100px 20px 120px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "url('/design-assets/hero-pattern.png')", opacity: 0.06, pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 1, maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
+        <div style={{ position: "relative", zIndex: 1, maxWidth: "1000px", margin: "0 auto", padding: "0 20px" }}>
           <h1 style={{ fontSize: "clamp(30px, 4vw, 44px)", fontWeight: "800", marginBottom: "12px", letterSpacing: "-0.5px" }}>{page.title}</h1>
           {page.subtitle && <p style={{ opacity: 0.92, fontSize: "clamp(15px, 2vw, 19px)", margin: "0 auto", lineHeight: "1.6", fontWeight: "300" }}>{page.subtitle}</p>}
         </div>
       </div>
 
       {/* Main Content Card Container */}
-      <div style={{ padding: "56px 60px", width: "94%", maxWidth: "1080px", margin: "-60px auto 100px", backgroundColor: "white", borderRadius: "24px", boxShadow: "0 20px 50px rgba(15, 23, 42, 0.08)", position: "relative", zIndex: 2 }}>
+      <div style={{ padding: "56px 60px", width: "94%", maxWidth: "1140px", margin: "-60px auto 100px", backgroundColor: "white", borderRadius: "24px", boxShadow: "0 20px 50px rgba(15, 23, 42, 0.08)", position: "relative", zIndex: 2 }}>
         <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </div>
     </div>

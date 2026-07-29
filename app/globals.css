@@ -1885,11 +1885,20 @@ a {
 .dynamic-content-wrapper p,
 .ql-editor p {
   text-align: justify;
-  text-justify: inter-word;
-  margin-top: 1.35em;
-  margin-bottom: 1.35em;
+  text-align-last: left;
+  -webkit-text-align-last: left;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
   line-height: 1.85;
   font-size: 1.1rem;
+}
+
+/* Paragraph containing Images should be centered, not justified */
+.dynamic-content-wrapper p:has(img),
+.ql-editor p:has(img) {
+  text-align: center !important;
+  text-align-last: center !important;
+  -webkit-text-align-last: center !important;
 }
 
 /* Headings remain Left-aligned for clean typographic contrast */
@@ -1955,6 +1964,8 @@ a {
   margin-bottom: 0.4em;
   line-height: 1.8;
   text-align: justify;
+  text-align-last: left;
+  -webkit-text-align-last: left;
 }
 
 /* Blockquotes */
@@ -1969,6 +1980,8 @@ a {
   padding: 1.25rem 1.5rem;
   border-radius: 0 12px 12px 0;
   text-align: justify;
+  text-align-last: left;
+  -webkit-text-align-last: left;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
@@ -1977,13 +1990,14 @@ a {
 .ql-editor img {
   display: block;
   max-width: 100%;
-  max-height: 520px;
+  max-height: 480px;
   width: auto;
   height: auto;
   margin: 2em auto;
   border-radius: 14px;
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
   object-fit: contain;
+  clear: both;
 }
 
 /* Tables */
