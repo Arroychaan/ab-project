@@ -68,7 +68,7 @@ export default function CreatePageBuilder() {
         toast.error(json.error || "Gagal membuat halaman");
       }
     } catch (e) {
-      toast.error("Terjadi kesalahan sistem");
+      toast.error(e.message || e.toString() || "Terjadi kesalahan sistem");
     } finally {
       setIsSubmitting(false);
     }

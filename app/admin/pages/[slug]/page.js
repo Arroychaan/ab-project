@@ -88,14 +88,16 @@ export default function EditPageBuilder({ params }) {
         }),
       });
 
+      const json = await res.json().catch(() => ({}));
+
       if (res.ok) {
         toast.success("Perubahan halaman disimpan!");
         router.push("/admin/pages");
       } else {
-        toast.error("Gagal menyimpan halaman");
+        toast.error(json.error || "Gagal menyimpan halaman");
       }
     } catch (e) {
-      toast.error("Terjadi kesalahan sistem");
+      toast.error(e.message || e.toString() || "Terjadi kesalahan sistem");
     } finally {
       setIsSubmitting(false);
     }

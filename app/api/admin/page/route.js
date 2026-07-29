@@ -44,6 +44,7 @@ export async function POST(req) {
 
     return NextResponse.json(newPage);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to create page" }, { status: 500 });
+    console.error("API POST Page Error:", error);
+    return NextResponse.json({ error: error.message || error.toString() || "Gagal membuat halaman baru" }, { status: 500 });
   }
 }

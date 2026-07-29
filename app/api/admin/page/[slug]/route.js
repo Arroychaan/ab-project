@@ -32,10 +32,11 @@ export async function PUT(request, { params }) {
 
     return NextResponse.json({ success: true, page: updatedPage }, { status: 200 });
   } catch (error) {
+    console.error("API PUT Page Error:", error);
     if (error.code === 'P2025') {
-      return NextResponse.json({ error: "Page not found" }, { status: 404 });
+      return NextResponse.json({ error: "Halaman tidak ditemukan di database" }, { status: 404 });
     }
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ error: error.message || error.toString() || "Terjadi kesalahan internal server" }, { status: 500 });
   }
 }
 
