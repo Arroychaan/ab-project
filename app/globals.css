@@ -1872,8 +1872,8 @@ a {
 .dynamic-content-wrapper,
 .ql-editor {
   color: #334155;
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.85;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -1886,9 +1886,10 @@ a {
 .ql-editor p {
   text-align: justify;
   text-justify: inter-word;
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
   line-height: 1.85;
+  font-size: 1.1rem;
 }
 
 /* Headings remain Left-aligned for clean typographic contrast */
@@ -1906,7 +1907,7 @@ a {
 .ql-editor h6 {
   color: #0f172a;
   font-weight: 700;
-  margin-top: 1.6em;
+  margin-top: 1.75em;
   margin-bottom: 0.75em;
   line-height: 1.35;
   text-align: left;
@@ -1943,8 +1944,8 @@ a {
 .dynamic-content-wrapper ol,
 .ql-editor ul,
 .ql-editor ol {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
   padding-left: 1.75em;
 }
 
@@ -1952,7 +1953,7 @@ a {
 .ql-editor li {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
-  line-height: 1.75;
+  line-height: 1.8;
   text-align: justify;
 }
 
@@ -1971,15 +1972,18 @@ a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-/* Images & Figures */
+/* Images & Figures - Smart Sizing for Vertical & Horizontal Photos */
 .dynamic-content-wrapper img,
 .ql-editor img {
   display: block;
   max-width: 100%;
+  max-height: 520px;
+  width: auto;
   height: auto;
-  margin: 1.5em auto;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  margin: 2em auto;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  object-fit: contain;
 }
 
 /* Tables */
