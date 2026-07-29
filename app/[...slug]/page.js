@@ -65,13 +65,13 @@ export default async function DynamicPage({ params }) {
       {page.customCss && <style>{page.customCss}</style>}
       
       {/* Premium Header */}
-      <div style={{ background: "linear-gradient(135deg, #0d6e3f 0%, #0a5a33 100%)", color: "white", padding: "100px 20px 120px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ background: "linear-gradient(135deg, #0d6e3f 0%, #0a5a33 100%)", color: "white", padding: "100px 20px 110px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "url('/design-assets/hero-pattern.png')", opacity: 0.05, pointerEvents: "none" }} />
-        <h1 style={{ fontSize: "42px", fontWeight: "700", marginBottom: "16px", position: "relative", zIndex: 1, letterSpacing: "-0.5px" }}>{page.title}</h1>
-        {page.subtitle && <p style={{ opacity: 0.9, fontSize: "18px", maxWidth: "600px", margin: "0 auto", position: "relative", zIndex: 1, lineHeight: "1.6" }}>{page.subtitle}</p>}
+        <h1 style={{ fontSize: "40px", fontWeight: "700", marginBottom: "16px", position: "relative", zIndex: 1, letterSpacing: "-0.5px" }}>{page.title}</h1>
+        {page.subtitle && <p style={{ opacity: 0.9, fontSize: "18px", maxWidth: "700px", margin: "0 auto", position: "relative", zIndex: 1, lineHeight: "1.6" }}>{page.subtitle}</p>}
       </div>
 
-      <div style={{ padding: "50px 50px", maxWidth: "850px", margin: "-70px auto 80px", backgroundColor: "white", borderRadius: "24px", boxShadow: "0 20px 40px rgba(0, 0, 0, 0.08)", position: "relative", zIndex: 2 }}>
+      <div style={{ padding: "48px 40px", width: "92%", maxWidth: "960px", margin: "-60px auto 80px", backgroundColor: "white", borderRadius: "24px", boxShadow: "0 20px 40px rgba(0, 0, 0, 0.06)", position: "relative", zIndex: 2 }}>
         {page.customHtml ? (
           <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: page.customHtml }} />
         ) : (

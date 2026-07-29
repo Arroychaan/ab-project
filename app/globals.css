@@ -1860,7 +1860,12 @@ a {
 .adm-guide-img {
   width: 100%;
   border-radius: 8px;
-  border/* =========================================================
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+/* =========================================================
    PREMIUM CMS TYPOGRAPHY & LAYOUT STYLING (CMS Dynamic Output)
    ========================================================= */
 
@@ -1868,26 +1873,22 @@ a {
 .ql-editor {
   color: #334155;
   font-size: 1.05rem;
-  line-height: 1.85;
+  line-height: 1.8;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
+  width: 100%;
   max-width: 100%;
 }
 
-/* Force Text Justification for Paragraphs, Spans, Lists, & Divisions */
+/* Text Justification ONLY for Paragraphs & Body Text */
 .dynamic-content-wrapper p,
-.dynamic-content-wrapper div,
-.dynamic-content-wrapper li,
-.dynamic-content-wrapper span,
-.ql-editor p,
-.ql-editor div,
-.ql-editor li,
-.ql-editor span {
-  text-align: justify !important;
+.ql-editor p {
+  text-align: justify;
   text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  line-height: 1.85;
 }
 
 /* Headings remain Left-aligned for clean typographic contrast */
@@ -1908,7 +1909,7 @@ a {
   margin-top: 1.6em;
   margin-bottom: 0.75em;
   line-height: 1.35;
-  text-align: left !important;
+  text-align: left;
   letter-spacing: -0.3px;
 }
 
@@ -1916,13 +1917,6 @@ a {
 .dynamic-content-wrapper h2, .ql-editor h2 { font-size: 1.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.3em; }
 .dynamic-content-wrapper h3, .ql-editor h3 { font-size: 1.4rem; }
 .dynamic-content-wrapper h4, .ql-editor h4 { font-size: 1.2rem; }
-
-/* Paragraph & Element Margins */
-.dynamic-content-wrapper p,
-.ql-editor p {
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
-}
 
 /* Link Styling */
 .dynamic-content-wrapper a,
@@ -1959,6 +1953,7 @@ a {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
   line-height: 1.75;
+  text-align: justify;
 }
 
 /* Blockquotes */
@@ -1972,7 +1967,7 @@ a {
   background-color: #f4faf7;
   padding: 1.25rem 1.5rem;
   border-radius: 0 12px 12px 0;
-  text-align: justify !important;
+  text-align: justify;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
@@ -1982,8 +1977,8 @@ a {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 2em auto;
-  border-radius: 14px;
+  margin: 1.5em auto;
+  border-radius: 12px;
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
 
@@ -2005,7 +2000,7 @@ a {
   color: #ffffff;
   padding: 12px 16px;
   font-weight: 600;
-  text-align: left !important;
+  text-align: left;
 }
 
 .dynamic-content-wrapper td,
@@ -2013,7 +2008,7 @@ a {
   padding: 12px 16px;
   border-bottom: 1px solid #e2e8f0;
   color: #334155;
-  text-align: justify !important;
+  text-align: justify;
 }
 
 .dynamic-content-wrapper tr:nth-child(even),
@@ -2032,10 +2027,7 @@ a {
   font-size: 0.9rem;
   overflow-x: auto;
   margin: 1.5em 0;
-  text-align: left !important;
+  text-align: left;
   white-space: pre-wrap !important;
-}argin-top: 2em;
-  margin-bottom: 2em;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
