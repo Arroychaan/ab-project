@@ -69,6 +69,17 @@ export default function CreatePost() {
     }
   };
 
+  const quillModules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'align': [] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'image'],
+      ['clean']
+    ],
+  };
+
   return (
     <>
       <div className="adm-section-header">
@@ -111,7 +122,7 @@ export default function CreatePost() {
           <label>URL Gambar Thumbnail (Opsional)</label>
           <input 
             type="text" 
-            placeholder="Paste URL gambar dari Media Library..."
+            placeholder="https://..." 
             value={formData.thumbnail} 
             onChange={(e) => setFormData({ ...formData, thumbnail: e.target.value })} 
           />
@@ -129,6 +140,7 @@ export default function CreatePost() {
               theme="snow"
               value={formData.content}
               onChange={(content) => setFormData({ ...formData, content })}
+              modules={quillModules}
               style={{ height: "calc(100% - 42px)" }}
             />
           </div>

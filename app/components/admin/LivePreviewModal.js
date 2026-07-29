@@ -108,7 +108,7 @@ export default function LivePreviewModal({ isOpen, onClose, page }) {
                 {subtitle && <p style={{ fontSize: viewMode === 'MOBILE' ? '16px' : '20px', margin: 0, opacity: 0.9, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{subtitle}</p>}
               </div>
               <div style={{ padding: viewMode === 'MOBILE' ? '24px 16px' : '40px 20px', maxWidth: '1000px', margin: '0 auto', color: '#334155' }}>
-                <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: contentHtml }} />
               </div>
             </div>
           )}
@@ -128,14 +128,14 @@ export default function LivePreviewModal({ isOpen, onClose, page }) {
                 boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                 color: '#334155'
               }}>
-                <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: contentHtml }} />
               </div>
             </div>
           )}
 
           {layout === 'BLANK' && (
             <div className="dynamic-page blank-layout">
-              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+              <div className="dynamic-content-wrapper" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             </div>
           )}
 

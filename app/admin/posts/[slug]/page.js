@@ -107,6 +107,17 @@ export default function EditPost({ params }) {
 
   if (isLoading) return <p>Memuat editor...</p>;
 
+  const quillModules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ 'align': [] }],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'image'],
+      ['clean']
+    ],
+  };
+
   return (
     <>
       <div className="adm-section-header">
@@ -165,6 +176,7 @@ export default function EditPost({ params }) {
               theme="snow"
               value={formData.content}
               onChange={(content) => setFormData({ ...formData, content })}
+              modules={quillModules}
               style={{ height: "calc(100% - 42px)" }}
             />
           </div>

@@ -50,10 +50,10 @@ export default async function SinglePostPage({ params }) {
           />
         )}
 
-        {/* Gunakan quill styling untuk merender HTML */}
+        {/* Gunakan quill & dynamic-content-wrapper styling untuk merender HTML */}
         <div 
-          className="ql-editor"
-          style={{ padding: 0, backgroundColor: "transparent", fontSize: "17px", lineHeight: 1.7, color: "#334155" }}
+          className="ql-editor dynamic-content-wrapper"
+          style={{ padding: 0, backgroundColor: "transparent", fontSize: "17px", lineHeight: 1.85, color: "#334155" }}
           dangerouslySetInnerHTML={{ __html: post.content }} 
         />
         
