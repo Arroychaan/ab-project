@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
 import LivePreviewModal from "@/app/components/admin/LivePreviewModal";
+import { useQuillImageUpload } from "@/app/hooks/useQuillImageUpload";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -14,6 +15,7 @@ export default function CreatePageBuilder() {
   const [isDevMode, setIsDevMode] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const { quillRef, quillModules } = useQuillImageUpload();
 
   // Form states
   const [title, setTitle] = useState("");
@@ -74,16 +76,7 @@ export default function CreatePageBuilder() {
     }
   };
 
-  const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, 4, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'align': [] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      ['link', 'image'],
-      ['clean']
-    ],
-  };
+
 
   return (
     <>
@@ -163,7 +156,7 @@ export default function CreatePageBuilder() {
           <div className="adm-form-group" style={{ paddingBottom: "40px" }}>
             <label>Konten Halaman (Visual Editor)</label>
             <div style={{ backgroundColor: "white", borderRadius: "8px" }}>
-              <ReactQuill theme="snow" value={content} onChange={setContent} modules={quillModules} style={{ height: "300px" }} />
+              <ReactQuill ref={quillRef} theme="snow" value={content} onChange={setContent} modules={quillModules} style={{ height: "300px" }} />
             </div>
           </div>
         )}

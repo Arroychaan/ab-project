@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
 import Link from "next/link";
+import { useQuillImageUpload } from "@/app/hooks/useQuillImageUpload";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -19,6 +20,7 @@ export default function CreatePost() {
     published: true,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { quillRef, quillModules } = useQuillImageUpload();
 
   const generateSlug = (text) => {
     return text.toString().toLowerCase().trim()
@@ -69,16 +71,6 @@ export default function CreatePost() {
     }
   };
 
-  const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, 4, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'align': [] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      ['link', 'image'],
-      ['clean']
-    ],
-  };
 
   return (
     <>
@@ -137,6 +129,7 @@ export default function CreatePost() {
           <label>Isi Konten Berita</label>
           <div style={{ flex: 1, border: "1px solid #e2e8f0", borderRadius: "8px", background: "white" }}>
             <ReactQuill 
+              ref={quillRef}
               theme="snow"
               value={formData.content}
               onChange={(content) => setFormData({ ...formData, content })}
