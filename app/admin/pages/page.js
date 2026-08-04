@@ -12,7 +12,11 @@ export default function PagesList() {
     try {
       const res = await fetch("/api/admin/page");
       const data = await res.json();
-      setPages(data);
+      if (res.ok && Array.isArray(data)) {
+        setPages(data);
+      } else {
+        toast.error(data.error || "Gagal mengambil daftar halaman");
+      }
     } catch (e) {
       toast.error("Gagal mengambil daftar halaman");
     } finally {

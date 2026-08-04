@@ -32,7 +32,7 @@ export default function UsersManagementPage() {
     try {
       const res = await fetch("/api/admin/users");
       const data = await res.json();
-      if (res.ok) {
+      if (res.ok && Array.isArray(data.users)) {
         setUsers(data.users);
       } else {
         setError(data.error);

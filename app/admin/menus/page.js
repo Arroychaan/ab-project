@@ -19,8 +19,14 @@ export default function MenuBuilder() {
     try {
       const res = await fetch("/api/admin/menus");
       const data = await res.json();
-      setMenus(data);
+      if (res.ok && Array.isArray(data)) {
+        setMenus(data);
+      } else {
+        setMenus([]);
+        toast.error(data.error || "Gagal mengambil menu");
+      }
     } catch (e) {
+      setMenus([]);
       toast.error("Gagal mengambil menu");
     } finally {
       setIsLoading(false);
