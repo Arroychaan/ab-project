@@ -2,17 +2,25 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Head from "next/head";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata = {
   title: "Berita & Artikel | Al-Bahjah",
   description: "Dapatkan informasi terbaru, artikel, dan pengumuman dari pondok pesantren Al-Bahjah.",
 };
 
 export default async function BeritaPage() {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    orderBy: { createdAt: "desc" },
-    include: { author: { select: { name: true } } }
-  });
+  let posts = [];
+  try {
+    posts = await prisma.post.findMany({
+      where: { published: true },
+      orderBy: { createdAt: "desc" },
+      include: { author: { select: { name: true } } }
+    });
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+  }
 
   return (
     <div style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>

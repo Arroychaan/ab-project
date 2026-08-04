@@ -6,23 +6,32 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
-  if (!post) return { title: "Berita Tidak Ditemukan" };
+  try {
+    const { slug } = await params;
+    const post = await prisma.post.findUnique({ where: { slug } });
+    if (!post) return { title: "Berita Tidak Ditemukan" };
 
-  return {
-    title: `${post.title} | Al-Bahjah`,
-    description: post.content.replace(/<[^>]+>/g, '').substring(0, 150) + "...",
-  };
+    return {
+      title: `${post.title} | Al-Bahjah`,
+      description: post.content.replace(/<[^>]+>/g, '').substring(0, 150) + "...",
+    };
+  } catch (e) {
+    return { title: "Berita | Al-Bahjah" };
+  }
 }
 
 export default async function SinglePostPage({ params }) {
   const { slug } = await params;
+  let post = null;
   
-  const post = await prisma.post.findUnique({
-    where: { slug },
-    include: { author: { select: { name: true } } }
-  });
+  try {
+    post = await prisma.post.findUnique({
+      where: { slug },
+      include: { author: { select: { name: true } } }
+    });
+  } catch (e) {
+    console.error("SinglePostPage DB error:", e);
+  }
 
   if (!post || !post.published) {
     notFound();
