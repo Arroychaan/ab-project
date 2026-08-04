@@ -14,7 +14,9 @@ export default function PublicHeader() {
     // Fetch menu dari API
     fetch("/api/public/menus")
       .then(res => res.json())
-      .then(data => setRootMenus(data))
+      .then(data => {
+        if (Array.isArray(data)) setRootMenus(data);
+      })
       .catch(err => console.error(err));
 
     // Fetch settings dari API
@@ -117,7 +119,7 @@ export default function PublicHeader() {
           </button>
         </div>
         <div className="navbar-drawer-links">
-          {rootMenus.map((menu) => {
+          {Array.isArray(rootMenus) && rootMenus.map((menu) => {
             if (menu.isDropdown && menu.children?.length > 0) {
               return (
                 <div key={menu.id}>

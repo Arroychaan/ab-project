@@ -2,11 +2,16 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
 export default async function Footer() {
-  const settingsDb = await prisma.webSetting.findMany();
-  const settings = settingsDb.reduce((acc, curr) => {
-    acc[curr.key] = curr.value;
-    return acc;
-  }, {});
+  let settings = {};
+  try {
+    const settingsDb = await prisma.webSetting.findMany();
+    settings = settingsDb.reduce((acc, curr) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {});
+  } catch (error) {
+    console.error("Failed to load footer settings:", error);
+  }
 
   const logoUrl = settings.logo_url || "/Logo-assets/Logo-Albahjah.png?v=3";
   const address = settings.address || "Jl. Pangeran Cakrabuana No.179, Blok Karanganyar, Kelurahan Sendang, Kecamatan Sumber, Kabupaten Cirebon, Jawa Barat 45611";
