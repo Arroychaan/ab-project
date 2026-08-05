@@ -55,6 +55,8 @@ export default function PagesList() {
         <Link href="/admin/pages/create" className="adm-btn adm-btn-primary">
           + Buat Halaman Baru
         </Link>
+      </div>
+
       {/* Seksi Pintasan Cepat Halaman Institusi Sekolah */}
       <div className="adm-card" style={{ background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)", border: "1px solid #bbf7d0", marginBottom: "28px", padding: "20px 24px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
@@ -74,7 +76,7 @@ export default function PagesList() {
             { slug: "smpiqu", name: "SMPIQu Al-Bahjah", desc: "SMP Islam Qur'ani Boarding", color: "#2563eb", logo: "/Logo-assets/smp-iqu-logo.png" },
             { slug: "smaiqu", name: "SMAIQu Al-Bahjah", desc: "SMA Islam Qur'ani Boarding", color: "#7c3aed", logo: "/Logo-assets/sma-iqu-logo.png" },
           ].map((item) => (
-            <div key={item.slug} style={{ backgroundColor: "white", padding: "16px", borderRadius: "12px", border: "1px solid #cbd5e1", display: "flex", alignItems: "center", justifyBetween: "space-between", gap: "12px" }}>
+            <div key={item.slug} style={{ backgroundColor: "white", padding: "16px", borderRadius: "12px", border: "1px solid #cbd5e1", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
               <img src={item.logo} alt={item.name} style={{ width: "40px", height: "40px", objectFit: "contain" }} onError={(e) => { e.target.style.display = "none"; }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <h4 style={{ margin: 0, fontSize: "14px", color: "#1e293b" }}>{item.name}</h4>
