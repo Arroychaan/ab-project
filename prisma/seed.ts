@@ -142,6 +142,33 @@ async function main() {
         content: "<h2><strong>Selamat Datang di SMAIQu Al-Bahjah Cirebon</strong></h2><p>SMAIQu (Sekolah Menengah Atas Islam Qur'ani) Al-Bahjah Cirebon 1 merupakan jenjang pemantapan dan kawah candradimuka bagi santri untuk melahirkan lulusan yang hafal Al-Qur'an 30 Juz mutqin, berakhlak mulia, dan siap berkiprah di perguruan tinggi ternama.</p><p></p><h2><strong>Program Unggulan SMAIQu</strong></h2><p>1. <strong>Khatam Tahfidz 30 Juz:</strong> Pemantapan dan ujian tasmi' hafalan 30 Juz Al-Qur'an secara mutqin.</p><p>2. <strong>Kajian Kitab Kuning Lanjutan:</strong> Pendalaman Fikih Al-Mahalli, Hadits, dan Bahasa Arab Tingkat Lanjut.</p><p>3. <strong>Bimbingan Masuk PTN & Luar Negeri:</strong> Program intensif persiapan SNBT, PTN Favorit, dan Beasiswa Timur Tengah (Al-Azhar Mesir, Yaman, dll).</p><p>4. <strong>Kepemimpinan & Organisasi Santri:</strong> Pelatihan Qiyadah (Organisasi Santri Al-Bahjah) dan Khidmah Masyarakat.</p><p></p><h2><strong>Informasi Pendaftaran & Kelulusan</strong></h2><p>Pendaftaran Santri Baru (PPDB SMAIQu) dapat dilakukan secara online maupun offline melalui Sekretariat Al-Bahjah Pusat.</p>",
       }),
     },
+    {
+      slug: "sekolah",
+      title: "Jenjang Sekolah & Pendidikan",
+      subtitle: "Pendidikan Terpadu Berbasis Al-Qur'an dan Akhlak Mulia",
+      layout: "STANDARD",
+      data: JSON.stringify({
+        content: "<h2><strong>Lembaga Pendidikan Al-Bahjah Cirebon</strong></h2><p>LPD Al-Bahjah Cirebon menyelenggarakan pendidikan formal dari tingkat Sekolah Dasar hingga Sekolah Menengah Atas berasrama:</p><p></p><h3><strong>1. SDIQu Al-Bahjah (SD Islam Qur'ani)</strong></h3><p>Membangun dasar keimanan, karakter Islami, dan hafalan juz awal sejak usia dini. <a href='/sdiqu'>Lihat Selengkapnya &rarr;</a></p><p></p><h3><strong>2. SMPIQu Al-Bahjah (SMP Islam Qur'ani)</strong></h3><p>Boarding school berbasis tahfidz intensif dan pendalaman kitab kuning dasar. <a href='/smpiqu'>Lihat Selengkapnya &rarr;</a></p><p></p><h3><strong>3. SMAIQu Al-Bahjah (SMA Islam Qur'ani)</strong></h3><p>Pemantapan hafalan 30 Juz Al-Qur'an mutqin, kitab turats, dan persiapan perguruan tinggi nasional maupun internasional. <a href='/smaiqu'>Lihat Selengkapnya &rarr;</a></p>",
+      }),
+    },
+    {
+      slug: "program",
+      title: "Program Unggulan Pesantren",
+      subtitle: "Program Pendidikan & Tarbiyah Al-Bahjah Cirebon 1",
+      layout: "STANDARD",
+      data: JSON.stringify({
+        content: "<h2><strong>Program Unggulan Al-Bahjah</strong></h2><p>1. <strong>Tahfidzul Qur'an Mutqin:</strong> Program bimbingan hafalan Al-Qur'an dengan sistem sanad dan tartil.</p><p>2. <strong>Tafaqquh Fiddin (Kajian Kitab Kuning):</strong> Pembekalan ilmu fikih, akidah, hadits, dan bahasa Arab berbasis kitab Ahlus Sunnah wal Jama'ah.</p><p>3. <strong>Pendidikan Akhlak & Adab Santri:</strong> Pembiasaan amalan sunnah, wirid, qiyamul lail, dan kepemimpinan Islami.</p><p>4. <strong>Ekstrakurikuler & Bahasa:</strong> Pramuka, panahan, beladiri, serta pengembangan bahasa Arab & Inggris.</p>",
+      }),
+    },
+    {
+      slug: "kontak",
+      title: "Hubungi Kami",
+      subtitle: "Lembaga Pengembangan Dakwah & Pendidikan Al-Bahjah Cirebon 1 (Pusat)",
+      layout: "STANDARD",
+      data: JSON.stringify({
+        content: "<h2><strong>Alamat & Kontak Resmi</strong></h2><p><strong>Alamat:</strong> Jl. Pangeran Cakrabuana No.179, Blok Karanganyar, Kelurahan Sendang, Kecamatan Sumber, Kabupaten Cirebon, Jawa Barat 45611</p><p><strong>WhatsApp Sekretariat:</strong> +62 813-1822-3521</p><p><strong>Saluran Resmi WhatsApp:</strong> <a href='https://whatsapp.com/channel/0029VbBbIRWJkK74Ms899h1j' target='_blank'>Gabung Saluran WA Al-Bahjah</a></p><p><strong>Instagram:</strong> <a href='https://instagram.com/albahjahcirebon1' target='_blank'>@albahjahcirebon1</a></p>",
+      }),
+    },
   ];
 
   for (const page of pagesData) {
