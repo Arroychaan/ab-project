@@ -112,6 +112,36 @@ async function main() {
         ],
       }),
     },
+    {
+      slug: "sdiqu",
+      title: "SDIQu Al-Bahjah Cirebon",
+      subtitle: "Sekolah Dasar Islam Qur'ani — Membangun Dasar Keimanan & Akhlak Mulia Sejak Dini",
+      layout: "HERO_IMAGE",
+      data: JSON.stringify({
+        heroImage: "/design-assets/bag-sd.png",
+        content: "<h2><strong>Selamat Datang di SDIQu Al-Bahjah Cirebon</strong></h2><p>SDIQu (Sekolah Dasar Islam Qur'ani) Al-Bahjah Cirebon 1 adalah jenjang pendidikan dasar terpadu yang memadukan Kurikulum Merdeka Nasional dengan kurikulum khas Diniyah Pesantren Al-Bahjah.</p><p></p><h2><strong>Program Unggulan SDIQu</strong></h2><p>1. <strong>Tahfidzul Qur'an:</strong> Target hafalan Al-Qur'an Juz 30, 29, dan 28 secara mutqin dengan tajwid yang lancar.</p><p>2. <strong>Pembiasaan Adab & Akhlak:</strong> Penanaman ibadah praktis harian, doa-doa sunnah, dan adab santri Islami.</p><p>3. <strong>Bahasa Arab & Inggris Dasar:</strong> Pengenalan mufrodat (kosakata) dan percakapan harian.</p><p>4. <strong>Pembelajaran Akademik Terpadu:</strong> Penguatan sains, matematika, dan literasi yang berbasis nilai-nilai keislaman.</p><p></p><h2><strong>Fasilitas Unggulan</strong></h2><p>• Ruang Kelas Ber-AC & Multimedia</p><p>• Masjid & Ruang Tahfidz yang Nyaman</p><p>• Lapangan Olahraga & Area Bermain Terbuka</p><p>• Perpustakaan Digital & Pojok Baca</p><p></p><h2><strong>Informasi Pendaftaran</strong></h2><p>Untuk informasi pendaftaran murid baru (PPDB SDIQu Al-Bahjah), silakan hubungi Sekretariat Pendaftaran di WhatsApp resmi kami.</p>",
+      }),
+    },
+    {
+      slug: "smpiqu",
+      title: "SMPIQu Al-Bahjah Cirebon",
+      subtitle: "Sekolah Menengah Pertama Islam Qur'ani — Boarding School Berbasis Tahfidz & Kitab Kuning",
+      layout: "HERO_IMAGE",
+      data: JSON.stringify({
+        heroImage: "/design-assets/masjid-smp.png",
+        content: "<h2><strong>Selamat Datang di SMPIQu Al-Bahjah Cirebon</strong></h2><p>SMPIQu (Sekolah Menengah Pertama Islam Qur'ani) Al-Bahjah Cirebon 1 adalah lembaga pendidikan berasrama (boarding school) yang dirancang untuk membina santri memasuki usia remaja dengan pondasi agama yang kokoh.</p><p></p><h2><strong>Program Unggulan SMPIQu</strong></h2><p>1. <strong>Tahfidz Intensif:</strong> Program akselerasi hafalan Al-Qur'an menuju target 15 - 20 Juz.</p><p>2. <strong>Dirasah Islamiyah & Kitab Turats:</strong> Pendalaman dasar-dasar Fikih, Akidah, Hadits, dan Nahwu-Shorof.</p><p>3. <strong>Penguasaan Bahasa Arab & Inggris:</strong> Pembiasaan bilingual lisan dan tulisan di lingkungan asrama.</p><p>4. <strong>Prestasi Akademik & Sains:</strong> Penguatan KBM sains dan teknologi untuk persiapan olimpiade.</p><p></p><h2><strong>Kehidupan Asrama (Boarding Life)</strong></h2><p>Santri didampingi oleh Murabbi/Murabbiyah berpengalaman selama 24 jam dengan rutinitas shalat berjamaah, halaqah Qur'an subuh & sore, serta kajian adab dan karakter.</p><p></p><h2><strong>Informasi Pendaftaran</strong></h2><p>Pendaftaran Santri Baru (PPDB SMPIQu Al-Bahjah) dibuka setiap tahun ajaran baru. Hubungi panitia PPDB melalui Kontak Resmi Al-Bahjah.</p>",
+      }),
+    },
+    {
+      slug: "smaiqu",
+      title: "SMAIQu Al-Bahjah Cirebon",
+      subtitle: "Sekolah Menengah Atas Islam Qur'ani — Generasi Mutafaqqih Fiddin & Berdaya Saing Global",
+      layout: "HERO_IMAGE",
+      data: JSON.stringify({
+        heroImage: "/design-assets/piala-sma.png",
+        content: "<h2><strong>Selamat Datang di SMAIQu Al-Bahjah Cirebon</strong></h2><p>SMAIQu (Sekolah Menengah Atas Islam Qur'ani) Al-Bahjah Cirebon 1 merupakan jenjang pemantapan dan kawah candradimuka bagi santri untuk melahirkan lulusan yang hafal Al-Qur'an 30 Juz mutqin, berakhlak mulia, dan siap berkiprah di perguruan tinggi ternama.</p><p></p><h2><strong>Program Unggulan SMAIQu</strong></h2><p>1. <strong>Khatam Tahfidz 30 Juz:</strong> Pemantapan dan ujian tasmi' hafalan 30 Juz Al-Qur'an secara mutqin.</p><p>2. <strong>Kajian Kitab Kuning Lanjutan:</strong> Pendalaman Fikih Al-Mahalli, Hadits, dan Bahasa Arab Tingkat Lanjut.</p><p>3. <strong>Bimbingan Masuk PTN & Luar Negeri:</strong> Program intensif persiapan SNBT, PTN Favorit, dan Beasiswa Timur Tengah (Al-Azhar Mesir, Yaman, dll).</p><p>4. <strong>Kepemimpinan & Organisasi Santri:</strong> Pelatihan Qiyadah (Organisasi Santri Al-Bahjah) dan Khidmah Masyarakat.</p><p></p><h2><strong>Informasi Pendaftaran & Kelulusan</strong></h2><p>Pendaftaran Santri Baru (PPDB SMAIQu) dapat dilakukan secara online maupun offline melalui Sekretariat Al-Bahjah Pusat.</p>",
+      }),
+    },
   ];
 
   for (const page of pagesData) {

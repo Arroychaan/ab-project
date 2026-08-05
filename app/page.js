@@ -155,13 +155,13 @@ export default function Home() {
             <p className="school-card-desc">
               Membangun dasar keimanan, akhlak mulia, dan semangat belajar sejak dini.
             </p>
-            <button className="school-card-btn">
+            <Link href="/sdiqu" className="school-card-btn" style={{ textDecoration: "none" }}>
               Lihat Detail
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
             <img
               src="/design-assets/bag-sd.png"
               alt="SD Deco"
@@ -180,13 +180,13 @@ export default function Home() {
             <p className="school-card-desc">
               Membentuk karakter Qur&apos;ani, berpikir kritis, dan siap menghadapi tantangan.
             </p>
-            <button className="school-card-btn">
+            <Link href="/smpiqu" className="school-card-btn" style={{ textDecoration: "none" }}>
               Lihat Detail
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
             <img
               src="/design-assets/masjid-smp.png"
               alt="SMP Deco"
@@ -205,13 +205,13 @@ export default function Home() {
             <p className="school-card-desc">
               Mempersiapkan generasi unggul untuk melanjutkan pendidikan dan berkontribusi bagi umat.
             </p>
-            <button className="school-card-btn">
+            <Link href="/smaiqu" className="school-card-btn" style={{ textDecoration: "none" }}>
               Lihat Detail
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M12 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
             <img
               src="/design-assets/piala-sma.png"
               alt="SMA Deco"

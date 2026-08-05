@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import "react-quill-new/dist/quill.snow.css";
 import LivePreviewModal from "@/app/components/admin/LivePreviewModal";
 import { useQuillImageUpload } from "@/app/hooks/useQuillImageUpload";
+import InstitutionTemplatePresets from "@/app/components/admin/InstitutionTemplatePresets";
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -154,6 +155,17 @@ export default function EditPageBuilder({ params }) {
             <input type="text" className="adm-input" value={heroImage} onChange={e => setHeroImage(e.target.value)} />
           </div>
         )}
+
+        <InstitutionTemplatePresets 
+          onSelectPreset={(preset) => {
+            setTitle(preset.title);
+            setSubtitle(preset.subtitle);
+            setLayout("HERO_IMAGE");
+            setHeroImage(preset.heroImage);
+            setContent(preset.html);
+            if (isDevMode) setCustomHtml(preset.html);
+          }}
+        />
 
         <hr style={{ border: 0, borderTop: "1px dashed #cbd5e1", margin: "32px 0" }} />
 

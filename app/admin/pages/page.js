@@ -55,6 +55,42 @@ export default function PagesList() {
         <Link href="/admin/pages/create" className="adm-btn adm-btn-primary">
           + Buat Halaman Baru
         </Link>
+      {/* Seksi Pintasan Cepat Halaman Institusi Sekolah */}
+      <div className="adm-card" style={{ background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)", border: "1px solid #bbf7d0", marginBottom: "28px", padding: "20px 24px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+          <div>
+            <h3 style={{ margin: 0, color: "#166534", fontSize: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
+              🏫 Halaman Khusus Institusi Sekolah (SDIQu, SMPIQu, SMAIQu)
+            </h3>
+            <p style={{ margin: "4px 0 0 0", fontSize: "13px", color: "#15803d" }}>
+              Pintasan cepat untuk merakit dan mengedit halaman utama jenjang sekolah Al-Bahjah Cirebon.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "16px" }}>
+          {[
+            { slug: "sdiqu", name: "SDIQu Al-Bahjah", desc: "Sekolah Dasar Islam Qur'ani", color: "#16a34a", logo: "/Logo-assets/sd-iqu-logo.png" },
+            { slug: "smpiqu", name: "SMPIQu Al-Bahjah", desc: "SMP Islam Qur'ani Boarding", color: "#2563eb", logo: "/Logo-assets/smp-iqu-logo.png" },
+            { slug: "smaiqu", name: "SMAIQu Al-Bahjah", desc: "SMA Islam Qur'ani Boarding", color: "#7c3aed", logo: "/Logo-assets/sma-iqu-logo.png" },
+          ].map((item) => (
+            <div key={item.slug} style={{ backgroundColor: "white", padding: "16px", borderRadius: "12px", border: "1px solid #cbd5e1", display: "flex", alignItems: "center", justifyBetween: "space-between", gap: "12px" }}>
+              <img src={item.logo} alt={item.name} style={{ width: "40px", height: "40px", objectFit: "contain" }} onError={(e) => { e.target.style.display = "none"; }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <h4 style={{ margin: 0, fontSize: "14px", color: "#1e293b" }}>{item.name}</h4>
+                <span style={{ fontSize: "12px", color: "#64748b" }}>/{item.slug}</span>
+              </div>
+              <div style={{ display: "flex", gap: "6px" }}>
+                <a href={`/${item.slug}`} target="_blank" rel="noopener noreferrer" className="adm-btn adm-btn-secondary" style={{ padding: "6px 10px", fontSize: "12px" }} title="Lihat Web">
+                  👁️
+                </a>
+                <Link href={`/admin/pages/${item.slug}`} className="adm-btn adm-btn-primary" style={{ padding: "6px 12px", fontSize: "12px", backgroundColor: item.color, borderColor: item.color }}>
+                  ✏️ Rakit
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="adm-card">

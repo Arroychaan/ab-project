@@ -16,7 +16,8 @@ export default function AdminHelpModal({ isOpen, onClose }) {
     { id: 'media', label: '5. Panduan Lengkap Media & Upload' },
     { id: 'users', label: '6. Manajemen Admin & Setting' },
     { id: 'faq', label: '7. Tanya Jawab (FAQ)' },
-    { id: 'tutorial_page', label: '8. Praktik: Buat Halaman Jadi!' }
+    { id: 'tutorial_page', label: '8. Praktik: Buat Halaman Jadi!' },
+    { id: 'institution_guide', label: '9. Panduan Halaman Institusi (SDIQu, SMPIQu, SMAIQu)' }
   ];
 
   return (
@@ -296,6 +297,44 @@ export default function AdminHelpModal({ isOpen, onClose }) {
                     <li><strong>SELESAI! TARRRAAA! 🎉</strong> Halaman Anda telah berhasil dibuat. Anda akan dikembalikan ke tabel daftar halaman, dan Anda bisa mengeklik tombol <strong>Lihat Web</strong> (ikon mata) di tabel tersebut untuk melihat hasil karya Anda yang sudah live di internet.</li>
                   </ul>
 
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'institution_guide' && (
+              <div className="adm-help-tab-content">
+                <h3>9. Panduan Khusus Merakit Halaman Institusi Sekolah (SDIQu, SMPIQu, SMAIQu)</h3>
+                <p style={{ fontSize: "15px" }}>
+                  Setiap jenjang sekolah di Al-Bahjah (SDIQu, SMPIQu, dan SMAIQu) memiliki halaman publik khusus yang dapat diakses dari tombol kartu sekolah di Beranda. 
+                  Anda dapat merakit dan memperbarui konten masing-masing sekolah dengan sangat mudah menggunakan fitur <strong>Preset Template 1-Klik</strong>.
+                </p>
+
+                <div style={{ background: "#f0fdf4", padding: "20px", borderRadius: "12px", border: "1px solid #bbf7d0", marginBottom: "24px" }}>
+                  <h4 style={{ marginTop: 0, color: "#166534", fontSize: "16px" }}>📍 Cara Cepat Mengakses Halaman Sekolah:</h4>
+                  <ol style={{ color: "#15803d", paddingLeft: "20px", marginBottom: 0 }}>
+                    <li style={{ marginBottom: "8px" }}>Buka menu <strong>Halaman (Pages)</strong> di Sidebar Admin.</li>
+                    <li style={{ marginBottom: "8px" }}>Di bagian paling atas, terdapat blok hijau <strong>🏫 Halaman Khusus Institusi Sekolah</strong>.</li>
+                    <li>Klik tombol <strong>✏️ Rakit</strong> pada jenjang sekolah yang ingin diedit (SDIQu, SMPIQu, atau SMAIQu).</li>
+                  </ol>
+                </div>
+
+                <div style={{ background: "#eff6ff", padding: "20px", borderRadius: "12px", border: "1px solid #bfdbfe", marginBottom: "24px" }}>
+                  <h4 style={{ marginTop: 0, color: "#1e40af", fontSize: "16px" }}>⚡ Menggunakan Fitur Preset Template 1-Klik:</h4>
+                  <ol style={{ color: "#1e3a8a", paddingLeft: "20px", marginBottom: 0 }}>
+                    <li style={{ marginBottom: "8px" }}>Saat berada di form Page Builder, lihat seksi <strong>🚀 Preset Template Institusi (1-Klik Rakit)</strong>.</li>
+                    <li style={{ marginBottom: "8px" }}>Klik tombol <strong>+ Load SDIQu Template</strong>, <strong>+ Load SMPIQu Template</strong>, atau <strong>+ Load SMAIQu Template</strong>.</li>
+                    <li style={{ marginBottom: "8px" }}>Sistem akan mengisi Judul, Sub-judul, Layout Hero, Gambar Banner, serta struktur teks komprehensif (Program Unggulan, Fasilitas, & Info PPDB) secara otomatis!</li>
+                    <li>Anda tinggal menyesuaikan teks atau menambah foto kegiatan sekolah menggunakan Visual Editor, lalu klik <strong>Simpan Perubahan</strong>.</li>
+                  </ol>
+                </div>
+
+                <div style={{ background: "#fffbeb", padding: "16px", borderRadius: "8px", borderLeft: "4px solid #f59e0b" }}>
+                  <h4 style={{ marginTop: 0, color: "#b45309" }}>💡 Tips Merakit Halaman Sekolah yang Menarik:</h4>
+                  <ul style={{ color: "#92400e", paddingLeft: "20px", margin: 0 }}>
+                    <li style={{ marginBottom: "6px" }}>Gunakan foto kegiatan asli santri yang jernih untuk banner dan galeri sekolah.</li>
+                    <li style={{ marginBottom: "6px" }}>Sertakan kontak WhatsApp Panitia PPDB sekolah di bagian bawah halaman.</li>
+                    <li>Manfaatkan tombol <strong>👁️ Preview Halaman</strong> untuk mengecek tampilan di HP sebelum disimpan.</li>
+                  </ul>
                 </div>
               </div>
             )}
